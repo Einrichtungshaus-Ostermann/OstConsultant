@@ -19,35 +19,29 @@
 {block name='frontend_register_login_form'}
 
 
+    <div class="ost-consultant--customer-search">
+
+
     Hier Kunde suchen und per Klick einloggen
     <br /><br />
 
     <input type="text">
+
+
+
+    <button class="btn">Suchen</button>
+
     <br /><br />
 
-    Eike Brandt-Warneke<br />
-    Irgendeine Straße 123<br />
-    12345 Stadt<br />
-    Deutschland<br /><br />
+    <div class="search-result-container">
+
+
+    </div>
+
+
+    </div>
 
 
 
-
-
-
-
-<form name="sLogin" method="post" action="{url controller="OstConsultant" action="customerLogin"}" id="login--form">
-
-
-
-    <input type="hidden" name="email" value="asdasd@asdasdasd.de"/>
-    <input type="hidden" name="passwordMD5" value='$2y$10$JemMl0006gX/Hq8m0Eqsq.Q1SPmuLLX3oUc8jMjYq4Vk2HLCiD8uy'/>
-
-
-
-    <button type="submit" class="register--login-btn btn is--primary is--large" name="Submit">Login</button>
-
-
-</form>
 
 {/block}

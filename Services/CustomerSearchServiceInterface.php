@@ -9,10 +9,9 @@
  * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
  * @license   proprietary
  */
-
 namespace OstConsultant\Services;
 
-interface ErpCustomerSearchServiceInterface
+interface CustomerSearchServiceInterface
 {
     /**
      * ...

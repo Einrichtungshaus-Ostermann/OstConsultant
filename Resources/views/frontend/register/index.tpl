@@ -39,6 +39,13 @@
 
 
 
+    <button class="btn ost-consultant--display-registration" style="margin: 20px 0;">
+        Registrierung anzeigen
+    </button>
+
+
+
+
     {$smarty.block.parent}
 
 

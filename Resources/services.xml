@@ -30,6 +30,10 @@
         </service>
 
 
+        <service id="ost_consultant.customer_search_service" class="OstConsultant\Services\CustomerSearchService">
+        </service>
+
+
 
 
 

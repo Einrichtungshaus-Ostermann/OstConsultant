@@ -15,6 +15,7 @@
          data-street="{$customer->getStreet()}"
          data-zipcode="{$customer->getZip()}"
          data-city="{$customer->getCity()}"
+         data-country="{$customer->getCountry()}"
 
 
     >

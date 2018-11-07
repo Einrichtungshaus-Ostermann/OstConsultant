@@ -1,15 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 
-
+/**
+ * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
+ *
+ * @package   OstConsultant
+ *
+ * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
+ * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
+ * @license   proprietary
+ */
 
 namespace OstConsultant\Listeners\Controllers;
 
 use Enlight_Event_EventArgs as EventArgs;
 use Enlight_Controller_Action as Controller;
-
-
-
-
 
 class Frontend
 {
@@ -19,7 +23,6 @@ class Frontend
 	 *
 	 * @var string
 	 */
-
 	protected $viewDir;
 
 
@@ -29,10 +32,7 @@ class Frontend
      *
      * @var array
      */
-
     protected $configuration;
-
-
 
 
 
@@ -42,7 +42,6 @@ class Frontend
 	 * @param string   $viewDir
      * @param array    $configuration
 	 */
-
 	public function __construct( $viewDir, array $configuration )
 	{
 		// set params
@@ -59,7 +58,6 @@ class Frontend
      *
      * @return void
      */
-
     public function onPostDispatch( EventArgs $arguments )
     {
         /* @var $controller Controller */
@@ -67,13 +65,6 @@ class Frontend
         $request        = $controller->Request();
         $view           = $controller->View();
         $controllerName = $request->getControllerName();
-
-
-
-
-
-
-
 
         // add template dir
         $view->addTemplateDir( $this->viewDir );

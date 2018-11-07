@@ -1,24 +1,30 @@
 <?php declare(strict_types=1);
 
-
-
+/**
+ * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
+ *
+ * @package   OstConsultant
+ *
+ * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
+ * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
+ * @license   proprietary
+ */
 
 use Shopware\Components\CSRFWhitelistAware;
 use OstConsultant\Services\LoginServiceInterface;
 use OstConsultant\Services\ErpCustomerSearchServiceInterface;
-
+use OstConsultant\Services\CustomerSearchServiceInterface;
 
 class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Action implements CSRFWhitelistAware
 {
 
-
-
     /**
      * ...
      *
+     * @throws Exception
+     *
      * @return void
      */
-
     public function preDispatch()
     {
         // ...
@@ -27,12 +33,9 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         // ...
         $this->get( "template" )->addTemplateDir( $viewDir );
 
-
         // ...
         parent::preDispatch();
     }
-
-
 
 
 
@@ -57,6 +60,8 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
 
     /**
      * ...
+     *
+     * @return void
      */
     public function indexAction()
     {
@@ -66,10 +71,10 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
 
 
 
-
-
     /**
      * ...
+     *
+     * @return void
      */
     public function loginAction()
     {
@@ -77,32 +82,32 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         $number = $this->Request()->getParam( "number" );
 
         /* @var $loginService LoginServiceInterface */
-        $loginService = Shopware()->Container()->get( "ost_consultant.login_service" );
+        $loginService = $this->container->get( "ost_consultant.login_service" );
 
+        // try to log in
         $loggedIn = $loginService->login(
             $number
         );
 
-
+        // create response
         $response = array(
             'success' => $loggedIn,
-            'number' => $number
+            'number'  => $number
         );
 
-
-
-
+        // echo as json encoded string and die
         echo json_encode( $response );
         die();
     }
 
 
 
-
-
-
     /**
      * ...
+     *
+     * @throws Exception
+     *
+     * @return void
      */
     public function customerLoginAction()
     {
@@ -110,50 +115,63 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         $email = $this->Request()->getParam( "email" );
         $password = $this->Request()->getParam( "passwordMD5" );
 
-
+        // log in via module
         Shopware()->Modules()->Admin()->sLogin( true );
 
-        return $this->redirect(
-            [
-                'controller' => "account",
-                'action' => "index"
-            ]
-        );
+        // and redirect to account
+        $this->redirect([
+            'controller' => "account",
+            'action' => "index"
+        ]);
 
     }
-
-
 
 
 
     /**
      * ...
+     *
+     * @return void
      */
     public function erpCustomerSearchAction()
     {
-
-        // get the login
+        // get the search
         $search = $this->Request()->getParam( "search" );
 
         /* @var $searchService ErpCustomerSearchServiceInterface */
-        $searchService = Shopware()->Container()->get( "ost_consultant.erp_customer_search_service" );
+        $searchService = $this->container->get( "ost_consultant.erp_customer_search_service" );
 
+        // try to find customers
         $customers = $searchService->find(
             $search
         );
 
-
-
+        // and assign them
         $this->View()->assign( "customers", $customers );
-
-
-
-
-
     }
 
 
 
+    /**
+     * ...
+     *
+     * @return void
+     */
+    public function customerSearchAction()
+    {
+        // get the search
+        $search = $this->Request()->getParam( "search" );
 
+        /* @var $searchService CustomerSearchServiceInterface */
+        $searchService = Shopware()->Container()->get( "ost_consultant.customer_search_service" );
+
+        // try to find customers
+        $customers = $searchService->find(
+            $search
+        );
+
+        // and assign them
+        $this->View()->assign( "customers", $customers );
+    }
 
 }
