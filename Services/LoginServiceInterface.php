@@ -19,7 +19,7 @@ interface LoginServiceInterface
      *
      * @param string $number
      *
-     * @return boolean
+     * @return bool
      */
-    public function login( $number );
+    public function login($number);
 }

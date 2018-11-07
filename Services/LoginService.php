@@ -12,50 +12,49 @@
 
 namespace OstConsultant\Services;
 
+use Enlight_Components_Session_Namespace as Session;
 use OstErpApi\Api\Api;
 use OstErpApi\Struct\Consultant;
-use Enlight_Components_Session_Namespace as Session;
 
 class LoginService implements LoginServiceInterface
 {
-
     /**
      * ...
      *
      * @param string $number
      *
-     * @return boolean
+     * @return bool
      */
-    public function login( $number )
+    public function login($number)
     {
         /* @var $api Api */
-        $api = Shopware()->Container()->get( "ost_erp_api.api" );
+        $api = Shopware()->Container()->get('ost_erp_api.api');
 
         // try to find consultant
         $consultant = $api->findOneBy(
-            "consultant",
-            array( "[consultant.number] = " . $number )
+            'consultant',
+            ['[consultant.number] = ' . $number]
         );
 
         // not found?
-        if ( !$consultant instanceof Consultant )
+        if (!$consultant instanceof Consultant) {
             // stop
             return false;
+        }
 
         /* @var $session Session */
-        $session = Shopware()->Container()->get( "session" );
+        $session = Shopware()->Container()->get('session');
 
         // log in as consultant
         $session->offsetSet(
-            "ost-consultant",
-            array(
+            'ost-consultant',
+            [
                 'number' => $consultant->getNumber(),
                 'name'   => $consultant->getName()
-            )
+            ]
         );
 
         // all good
         return true;
     }
-
 }

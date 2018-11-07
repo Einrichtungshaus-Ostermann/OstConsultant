@@ -16,16 +16,15 @@ use Enlight_Components_Session_Namespace as Session;
 
 class ConsultantService implements ConsultantServiceInterface
 {
-
     /**
      * ...
      *
-     * @return boolean
+     * @return bool
      */
     public function isConsultant()
     {
         // check if we have consultant data
-        return ( is_array( $this->getConsultant() ) );
+        return  is_array($this->getConsultant());
     }
 
 
@@ -38,10 +37,9 @@ class ConsultantService implements ConsultantServiceInterface
     public function getConsultant()
     {
         /* @var $session Session */
-        $session = Shopware()->Container()->get( "session" );
+        $session = Shopware()->Container()->get('session');
 
         // return session offset
-        return $session->offsetGet( "ost-consultant" );
+        return $session->offsetGet('ost-consultant');
     }
-
 }

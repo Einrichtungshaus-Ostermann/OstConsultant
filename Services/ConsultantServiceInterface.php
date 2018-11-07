@@ -17,7 +17,7 @@ interface ConsultantServiceInterface
     /**
      * ...
      *
-     * @return boolean
+     * @return bool
      */
     public function isConsultant();
 

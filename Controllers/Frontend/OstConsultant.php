@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-/**
+/*
  * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
  *
  * @package   OstConsultant
@@ -10,28 +10,25 @@
  * @license   proprietary
  */
 
-use Shopware\Components\CSRFWhitelistAware;
-use OstConsultant\Services\LoginServiceInterface;
-use OstConsultant\Services\ErpCustomerSearchServiceInterface;
 use OstConsultant\Services\CustomerSearchServiceInterface;
+use OstConsultant\Services\ErpCustomerSearchServiceInterface;
+use OstConsultant\Services\LoginServiceInterface;
+use Shopware\Components\CSRFWhitelistAware;
 
 class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Action implements CSRFWhitelistAware
 {
-
     /**
      * ...
      *
      * @throws Exception
-     *
-     * @return void
      */
     public function preDispatch()
     {
         // ...
-        $viewDir = $this->container->getParameter( "ost_consultant.view_dir" );
+        $viewDir = $this->container->getParameter('ost_consultant.view_dir');
 
         // ...
-        $this->get( "template" )->addTemplateDir( $viewDir );
+        $this->get('template')->addTemplateDir($viewDir);
 
         // ...
         parent::preDispatch();
@@ -60,8 +57,6 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
 
     /**
      * ...
-     *
-     * @return void
      */
     public function indexAction()
     {
@@ -73,16 +68,14 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
 
     /**
      * ...
-     *
-     * @return void
      */
     public function loginAction()
     {
         // get the login
-        $number = $this->Request()->getParam( "number" );
+        $number = $this->Request()->getParam('number');
 
         /* @var $loginService LoginServiceInterface */
-        $loginService = $this->container->get( "ost_consultant.login_service" );
+        $loginService = $this->container->get('ost_consultant.login_service');
 
         // try to log in
         $loggedIn = $loginService->login(
@@ -90,13 +83,13 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         );
 
         // create response
-        $response = array(
+        $response = [
             'success' => $loggedIn,
             'number'  => $number
-        );
+        ];
 
         // echo as json encoded string and die
-        echo json_encode( $response );
+        echo json_encode($response);
         die();
     }
 
@@ -106,40 +99,35 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
      * ...
      *
      * @throws Exception
-     *
-     * @return void
      */
     public function customerLoginAction()
     {
         // get the login
-        $email = $this->Request()->getParam( "email" );
-        $password = $this->Request()->getParam( "passwordMD5" );
+        $email = $this->Request()->getParam('email');
+        $password = $this->Request()->getParam('passwordMD5');
 
         // log in via module
-        Shopware()->Modules()->Admin()->sLogin( true );
+        Shopware()->Modules()->Admin()->sLogin(true);
 
         // and redirect to account
         $this->redirect([
-            'controller' => "account",
-            'action' => "index"
+            'controller' => 'account',
+            'action'     => 'index'
         ]);
-
     }
 
 
 
     /**
      * ...
-     *
-     * @return void
      */
     public function erpCustomerSearchAction()
     {
         // get the search
-        $search = $this->Request()->getParam( "search" );
+        $search = $this->Request()->getParam('search');
 
         /* @var $searchService ErpCustomerSearchServiceInterface */
-        $searchService = $this->container->get( "ost_consultant.erp_customer_search_service" );
+        $searchService = $this->container->get('ost_consultant.erp_customer_search_service');
 
         // try to find customers
         $customers = $searchService->find(
@@ -147,23 +135,21 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         );
 
         // and assign them
-        $this->View()->assign( "customers", $customers );
+        $this->View()->assign('customers', $customers);
     }
 
 
 
     /**
      * ...
-     *
-     * @return void
      */
     public function customerSearchAction()
     {
         // get the search
-        $search = $this->Request()->getParam( "search" );
+        $search = $this->Request()->getParam('search');
 
         /* @var $searchService CustomerSearchServiceInterface */
-        $searchService = Shopware()->Container()->get( "ost_consultant.customer_search_service" );
+        $searchService = Shopware()->Container()->get('ost_consultant.customer_search_service');
 
         // try to find customers
         $customers = $searchService->find(
@@ -171,7 +157,6 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         );
 
         // and assign them
-        $this->View()->assign( "customers", $customers );
+        $this->View()->assign('customers', $customers);
     }
-
 }

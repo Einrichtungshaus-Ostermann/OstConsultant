@@ -21,5 +21,5 @@ interface ErpCustomerSearchServiceInterface
      *
      * @return array
      */
-    public function find( $search );
+    public function find($search);
 }

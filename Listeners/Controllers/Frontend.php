@@ -12,18 +12,17 @@
 
 namespace OstConsultant\Listeners\Controllers;
 
-use Enlight_Event_EventArgs as EventArgs;
 use Enlight_Controller_Action as Controller;
+use Enlight_Event_EventArgs as EventArgs;
 
 class Frontend
 {
-
-	/**
-	 * ...
-	 *
-	 * @var string
-	 */
-	protected $viewDir;
+    /**
+     * ...
+     *
+     * @var string
+     */
+    protected $viewDir;
 
 
 
@@ -37,17 +36,17 @@ class Frontend
 
 
     /**
-	 * ...
-	 *
-	 * @param string   $viewDir
-     * @param array    $configuration
-	 */
-	public function __construct( $viewDir, array $configuration )
-	{
-		// set params
-		$this->viewDir       = $viewDir;
-		$this->configuration = $configuration;
-	}
+     * ...
+     *
+     * @param string $viewDir
+     * @param array  $configuration
+     */
+    public function __construct($viewDir, array $configuration)
+    {
+        // set params
+        $this->viewDir = $viewDir;
+        $this->configuration = $configuration;
+    }
 
 
 
@@ -55,19 +54,16 @@ class Frontend
      * ...
      *
      * @param EventArgs $arguments
-     *
-     * @return void
      */
-    public function onPostDispatch( EventArgs $arguments )
+    public function onPostDispatch(EventArgs $arguments)
     {
         /* @var $controller Controller */
-        $controller     = $arguments->get('subject');
-        $request        = $controller->Request();
-        $view           = $controller->View();
+        $controller = $arguments->get('subject');
+        $request = $controller->Request();
+        $view = $controller->View();
         $controllerName = $request->getControllerName();
 
         // add template dir
-        $view->addTemplateDir( $this->viewDir );
+        $view->addTemplateDir($this->viewDir);
     }
-
 }

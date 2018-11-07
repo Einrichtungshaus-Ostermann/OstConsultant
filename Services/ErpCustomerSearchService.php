@@ -16,7 +16,6 @@ use OstErpApi\Api\Api;
 
 class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
 {
-
     /**
      * ...
      *
@@ -24,20 +23,19 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
      *
      * @return array
      */
-    public function find( $search )
+    public function find($search)
     {
         /* @var $api Api */
-        $api = Shopware()->Container()->get( "ost_erp_api.api" );
+        $api = Shopware()->Container()->get('ost_erp_api.api');
 
         // try to find customers
         $customers = $api->findBy(
-            "customer",
+            'customer',
             //array( "UPPER( [customer.firstname] ) LIKE UPPER( '%" . $search . "%' ) OR UPPER( [customer.lastname] ) LIKE UPPER( '%" . $search . "%' )")
-            array( "[customer.firstname] = " . $search )
+            ['[customer.firstname] = ' . $search]
         );
 
         // return them
         return $customers;
     }
-
 }

@@ -9,6 +9,7 @@
  * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
  * @license   proprietary
  */
+
 namespace OstConsultant\Services;
 
 interface CustomerSearchServiceInterface
@@ -20,5 +21,5 @@ interface CustomerSearchServiceInterface
      *
      * @return array
      */
-    public function find( $search );
+    public function find($search);
 }

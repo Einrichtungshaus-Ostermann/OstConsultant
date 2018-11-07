@@ -9,37 +9,32 @@
  * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
  * @license   proprietary
  */
+
 namespace OstConsultant\Services;
 
-use OstErpApi\Struct\Consultant;
-use Enlight_Components_Session_Namespace as Session;
 use Shopware\Models\Customer\Customer;
-
 
 class CustomerSearchService implements CustomerSearchServiceInterface
 {
-
-
-    public function find( $search )
+    public function find($search)
     {
-
-        $query = $this->getListQuery( $search );
+        $query = $this->getListQuery($search);
 
 
         $arr = $query->getQuery()->getArrayResult();
 
 
         return $arr;
-
-
     }
 
 
 
     /**
+     * @param mixed $search
+     *
      * @return \Shopware\Components\Model\QueryBuilder
      */
-    protected function getListQuery( $search )
+    protected function getListQuery($search)
     {
         /* @var $modelManager \Shopware\Components\Model\ModelManager */
         $modelManager = Shopware()->Models();

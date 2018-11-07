@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-/**
+/*
  * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
  *
  * @package   OstConsultant
@@ -10,27 +10,23 @@
  * @license   proprietary
  */
 
-use Shopware\Components\CSRFWhitelistAware;
-use OstConsultant\Services\LoginServiceInterface;
 use OstConsultant\Services\ConsultantServiceInterface;
+use Shopware\Components\CSRFWhitelistAware;
 
 class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Action implements CSRFWhitelistAware
 {
-
     /**
      * ...
      *
      * @throws Exception
-     *
-     * @return void
      */
     public function preDispatch()
     {
         // ...
-        $viewDir = $this->container->getParameter( "ost_consultant.view_dir" );
+        $viewDir = $this->container->getParameter('ost_consultant.view_dir');
 
         // ...
-        $this->get( "template" )->addTemplateDir( $viewDir );
+        $this->get('template')->addTemplateDir($viewDir);
 
         // ...
         parent::preDispatch();
@@ -74,10 +70,9 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
     public function getBodyTagAction()
     {
         /* @var $consultantService ConsultantServiceInterface */
-        $consultantService = $this->container->get( "ost_consultant.consultant_service" );
+        $consultantService = $this->container->get('ost_consultant.consultant_service');
 
         // check if we are a logged in consultant
-        $this->View()->assign( "isConsultant", $consultantService->isConsultant() );
+        $this->View()->assign('isConsultant', $consultantService->isConsultant());
     }
-
 }
