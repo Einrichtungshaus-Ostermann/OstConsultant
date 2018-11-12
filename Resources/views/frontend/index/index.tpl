@@ -3,7 +3,7 @@
 {extends file="parent:frontend/index/index.tpl"}
 
 {* set our namespace *}
-{namespace name="frontend/ost-consultant/index"}
+{namespace name="frontend/ost-consultant/index/index"}
 
 
 

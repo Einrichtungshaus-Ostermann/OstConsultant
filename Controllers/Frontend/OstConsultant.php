@@ -14,6 +14,13 @@ use OstConsultant\Services\CustomerSearchServiceInterface;
 use OstConsultant\Services\ErpCustomerSearchServiceInterface;
 use OstConsultant\Services\LoginServiceInterface;
 use Shopware\Components\CSRFWhitelistAware;
+use Enlight_Components_Session_Namespace as Session;
+use Shopware\Models\Customer\Customer;
+use Shopware\Models\Customer\Address;
+use Shopware\Models\Country\Country;
+use Shopware\Bundle\StoreFrontBundle\Struct\ShopContextInterface;
+use Shopware\Bundle\AccountBundle\Service\RegisterServiceInterface;
+use Shopware\Bundle\StoreFrontBundle\Struct\Attribute;
 
 class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Action implements CSRFWhitelistAware
 {
@@ -60,9 +67,20 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
      */
     public function indexAction()
     {
-        // ...
-        die('not implemented yet');
     }
+
+
+
+
+
+    /**
+     * ...
+     */
+    public function dashboardAction()
+    {
+    }
+
+
 
 
 
@@ -86,6 +104,30 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         $response = [
             'success' => $loggedIn,
             'number'  => $number
+        ];
+
+        // echo as json encoded string and die
+        echo json_encode($response);
+        die();
+    }
+
+
+
+    /**
+     * ...
+     */
+    public function logoutAction()
+    {
+
+        /* @var $session Session */
+        $session = Shopware()->Container()->get('session');
+
+        // log in as consultant
+        $session->offsetUnset( 'ost-consultant' );
+
+        // create response
+        $response = [
+            'success' => true
         ];
 
         // echo as json encoded string and die
@@ -159,4 +201,224 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         // and assign them
         $this->View()->assign('customers', $customers);
     }
+
+
+
+
+
+
+    /**
+     * ...
+     */
+    public function registerAction()
+    {
+        $params = $this->Request()->getParams();
+
+        $email = trim( $params['register']['personal']['email'] );
+
+        if ( ( empty( $email ) ) or ( substr_count( $email, "@" ) != 1 ) )
+            $email = "dummy-" . substr( md5( microtime() ), 0, 16 ) . "@ostermann.de";
+
+
+        $customer = Shopware()->Models()->getRepository( Customer::class )->findOneBy( array(
+            'email' => $email,
+            'accountMode' => Customer::ACCOUNT_MODE_CUSTOMER
+        ));
+
+
+        $params['register']['personal']['email'] = $email;
+
+
+        if ( $customer instanceof Customer )
+        {
+            $this->updateCustomer( $customer, $params['register'] );
+            $this->loginCustomer( $customer, $params['register'] );
+        }
+        else
+        {
+            $customer = $this->registerCustomer( $params['register'] );
+            $this->loginCustomer( $customer, $params['register'] );
+        }
+
+
+
+
+        $location = [
+            'controller' => "account",
+            'action' => "index",
+        ];
+
+
+
+
+        $this->redirect($location);
+    }
+
+
+
+
+
+
+    /**
+     * ...
+     *
+     * @throws Exception
+     */
+    private function updateCustomer( Customer $customer, $data )
+    {
+
+
+
+    }
+
+
+
+
+
+
+    /**
+     * ...
+     *
+     * @return Customer
+     */
+    private function registerCustomer( array $data )
+    {
+        /** @var ShopContextInterface $context */
+        $context = $this->get('shopware_storefront.context_service')->getShopContext();
+
+        /** @var Enlight_Components_Session_Namespace $session */
+        $session = $this->get('session');
+
+        /** @var RegisterServiceInterface $registerService */
+        $registerService = $this->get('shopware_account.register_service');
+
+        /* @var $country Country */
+        $country = Shopware()->Models()->find( Country::class, $data['billing']['country'] );
+
+
+
+        $customer = new Customer();
+
+        $customer->setReferer("");
+        $customer->setValidation("");
+        $customer->setAffiliate(0);
+        $customer->setPaymentId((int) $session->offsetGet('sPaymentID'));
+        $customer->setDoubleOptinRegister(false);
+        $customer->setDoubleOptinConfirmDate(null);
+
+        $customer->setPassword( md5( microtime() ) );
+        $customer->setEncoderName( "md5" );
+        $customer->setEmail( $data['personal']['email'] );
+        $customer->setActive( true );
+        $customer->setAccountMode( Customer::ACCOUNT_MODE_CUSTOMER );
+        $customer->setNewsletter( 0 );
+        $customer->setSalutation( $data['personal']['salutation'] );
+        $customer->setFirstname( $data['personal']['firstname'] );
+        $customer->setLastname( $data['personal']['lastname'] );
+        $customer->setBirthday( null );
+
+
+
+        $billing = new Address();
+
+        $billing->setSalutation( $data['personal']['salutation'] );
+        $billing->setFirstname( $data['personal']['firstname'] );
+        $billing->setLastname( $data['personal']['lastname'] );
+        $billing->setStreet( $data['billing']['street'] );
+        $billing->setZipcode( $data['billing']['zipcode'] );
+        $billing->setCity( $data['billing']['city'] );
+        $billing->setPhone( $data['personal']['phone'] );
+        $billing->setCountry( $country );
+
+        $shipping = null;
+
+        if ( $data['billing']['shippingAddress'] == "1" )
+        {
+            /* @var $shippingCountry Country */
+            $shippingCountry = Shopware()->Models()->find( Country::class, $data['shipping']['country'] );
+
+
+            $shipping = new Address();
+
+            $shipping->setSalutation( $data['shipping']['salutation'] );
+            $shipping->setFirstname( $data['shipping']['firstname'] );
+            $shipping->setLastname( $data['shipping']['lastname'] );
+            $shipping->setStreet( $data['shipping']['street'] );
+            $shipping->setZipcode( $data['shipping']['zipcode'] );
+            $shipping->setCity( $data['shipping']['city'] );
+            $shipping->setPhone( $data['shipping']['phone'] );
+            $shipping->setCountry( $shippingCountry );
+        }
+
+
+
+
+
+
+
+        $shop = $context->getShop();
+        $shop->addAttribute('sendOptinMail', new Attribute([
+            'sendOptinMail' => false,
+        ]));
+
+
+        $registerService->register(
+            $shop,
+            $customer,
+            $billing,
+            $shipping
+        );
+
+
+        return $customer;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    /**
+     * ...
+     *
+     * @throws Exception
+     */
+    private function loginCustomer( Customer $customer, array $data )
+    {
+
+        /** @var Enlight_Components_Session_Namespace $session */
+        $session = $this->get('session');
+        $session->offsetSet('sRegister', $data);
+        $session->offsetSet('sOneTimeAccount', false);
+        $session->offsetSet('sRegisterFinished', true);
+
+
+        $session->offsetSet('sCountry', $customer->getDefaultBillingAddress()->getCountry()->getId());
+
+
+
+        // get the login
+        $this->Request()->setPost('email', $customer->getEmail());
+        $this->Request()->setPost('passwordMD5', $customer->getPassword());
+
+
+
+        // log in via module
+        Shopware()->Modules()->Admin()->sLogin(true);
+
+
+
+    }
+
+
+
+
+
+
+
 }

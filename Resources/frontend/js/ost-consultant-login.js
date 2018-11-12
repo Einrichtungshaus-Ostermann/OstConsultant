@@ -17,8 +17,9 @@
             var me = this;
 
             // admin delete
-            me._on( me.$el, 'click', $.proxy( me.onLoginClick, me ) );
+            me._on( me.$el, 'dblclick', $.proxy( me.onLoginClick, me ) );
         },
+
 
 
         // ...

@@ -53,7 +53,7 @@
                         var $customer = $button.closest( ".customer" );
 
 
-                        var $form = $( "body form.register--form" );
+                        var $form = $( "body form.ost-consultant--register--form" );
 
 
 
@@ -77,7 +77,7 @@
 
 
 
-                        $( "body form.panel.register--form" ).show();
+                        $( "body form.panel.ost-consultant--register--form" ).show();
                         $( "body button.ost-consultant--display-registration" ).hide();
 
                     });
@@ -120,7 +120,7 @@
 
 
     $( "body button.ost-consultant--display-registration" ).on( "click", function() {
-        $( "body form.panel.register--form" ).show();
+        $( "body form.panel.ost-consultant--register--form" ).show();
         $( "body button.ost-consultant--display-registration" ).hide();
     });
 

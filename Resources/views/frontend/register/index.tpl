@@ -7,11 +7,50 @@
 
 
 
+{block name='frontend_register_index_form'}
+
+
+
+
+    <form method="post" action="{url controller='OstConsultant' action='register'}" class="panel ost-consultant--register--form" id="ost-consultant--register--form">
+        <div class="register--content">
+
+
+
+
+
+                {include file="frontend/register/personal_fieldset.tpl" form_data=$register.personal error_flags=$errors.personal}
+
+
+
+                {include file="frontend/register/billing_fieldset.tpl" form_data=$register.billing error_flags=$errors.billing country_list=$countryList}
+
+                {include file="frontend/register/shipping_fieldset.tpl" form_data=$register.shipping error_flags=$errors.shipping country_list=$countryList}
+
+
+
+
+
+            <div style="text-align: right;">
+                <input class="btn is--primary is--large" type="submit" value="{s name="register-customer-button"}Kunde registrieren{/s}">
+            </div>
+        </div>
+    </form>
+
+{/block}
+
+
+
+
+
+
+
 
 
 
 
 {* ... *}
+
 {block name='frontend_register_index_dealer_register'}
 
 
@@ -64,3 +103,6 @@
 
 {* remove data protection notice *}
 {block name='frontend_register_index_form_privacy'}{/block}
+
+
+
