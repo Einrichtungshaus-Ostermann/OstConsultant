@@ -78,6 +78,17 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
      */
     public function dashboardAction()
     {
+
+        $configuration = Shopware()->Container()->get( "ost_consultant.configuration" );
+
+        if ( !empty( $configuration['homeUrl'] ) )
+        {
+            $this->redirect( $configuration['homeUrl'] );
+            return;
+        }
+
+
+
     }
 
 
