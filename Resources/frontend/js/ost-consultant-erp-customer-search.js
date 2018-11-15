@@ -13,11 +13,25 @@
     // create plugin
     $.plugin( "ostConsultantErpCustomerSearch", {
 
+
+        configuration: {
+            erpCustomerSearchUrl: null
+        },
+
+
+
+
+
         // on initialization
         init: function ()
         {
             // get this
             var me = this;
+
+
+            me.configuration.erpCustomerSearchUrl = ostConsultantConfiguration.erpCustomerSearchUrl;
+
+
 
             // admin delete
             me._on( me.$el.find( "button" ), 'click', $.proxy( me.onSearchClick, me ) );
@@ -38,7 +52,7 @@
 
             $.ostFoundationAjax.get(
                 {
-                    url: "http://inhouse-ost-5501/OstConsultant/ErpCustomerSearch",
+                    url: me.configuration.erpCustomerSearchUrl,
                     params: { search: input }
                 },
                 function( response ) {

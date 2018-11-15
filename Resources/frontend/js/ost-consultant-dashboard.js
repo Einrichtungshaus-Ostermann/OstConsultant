@@ -14,11 +14,26 @@
     // create plugin
     $.plugin( "ostConsultantDashboard", {
 
+
+
+
+
+        configuration: {
+            logoutUrl: null
+        },
+
+
+
+
+
+
         // on initialization
         init: function ()
         {
             // get this
             var me = this;
+
+            me.configuration.logoutUrl = ostConsultantConfiguration.logoutUrl;
 
             // admin delete
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="home"]' ), 'click', $.proxy( me.onHomeClick, me ) );
@@ -90,7 +105,7 @@
 
             $.ostFoundationJson.get(
                 {
-                    url: "http://inhouse-ost-5501/OstConsultant/logout",
+                    url: me.configuration.logoutUrl,
                     method: "post"
                 },
                 function( response ) {

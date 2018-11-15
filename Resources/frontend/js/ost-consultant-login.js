@@ -10,11 +10,21 @@
     // create plugin
     $.plugin( "ostConsultantLogin", {
 
+
+
+        configuration: {
+            loginUrl: null
+        },
+
+
+
         // on initialization
         init: function ()
         {
             // get this
             var me = this;
+
+            me.configuration.loginUrl = ostConsultantConfiguration.loginUrl;
 
             // admin delete
             me._on( me.$el, 'dblclick', $.proxy( me.onLoginClick, me ) );
@@ -36,7 +46,7 @@
                     // try to login
                     $.ostFoundationJson.get(
                         {
-                            url: "http://inhouse-ost-5501/OstConsultant/login",
+                            url: me.configuration.loginUrl,
                             method: "post",
                             params: { number: number }
                         },
