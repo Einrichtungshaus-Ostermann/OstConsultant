@@ -26,8 +26,11 @@
 
             me.configuration.loginUrl = ostConsultantConfiguration.loginUrl;
 
-            // admin delete
-            me._on( me.$el, 'dblclick', $.proxy( me.onLoginClick, me ) );
+            // ...
+            me._on( me.$el.find( ".ost-consultant--login" ), 'dblclick', $.proxy( me.onLoginClick, me ) );
+
+            // ...
+            me._on( me.$el.find( "div.ost-consultant--dashboard--login" ), 'click', $.proxy( me.onLoginClick, me ) );
         },
 
 
@@ -95,10 +98,16 @@
 
 
     // call our plugin
-    $( "body .ost-consultant--login" ).ostConsultantLogin();
+    $( "body" ).ostConsultantLogin();
 
 
 
+
+    $.subscribe('plugin/swEmotionLoader/onLoadEmotionFinished', function() {
+
+        
+        $( "body div.emotion--wrapper" ).ostConsultantDashboard();
+    })
 
 
 

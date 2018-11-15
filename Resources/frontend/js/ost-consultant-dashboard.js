@@ -35,13 +35,24 @@
 
             me.configuration.logoutUrl = ostConsultantConfiguration.logoutUrl;
 
-            // admin delete
+
+
+            // dashboard buttons
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="home"]' ), 'click', $.proxy( me.onHomeClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="account"]' ), 'click', $.proxy( me.onAccountClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="cart"]' ), 'click', $.proxy( me.onCartClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="qr"]' ), 'click', $.proxy( me.onQrClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="search"]' ), 'click', $.proxy( me.onSearchClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="logout"]' ), 'click', $.proxy( me.onLogoutClick, me ) );
+
+            // optional selectors for emotion elements
+            me._on( me.$el.find( 'div.ost-consultant--dashboard--home' ), 'click', $.proxy( me.onHomeClick, me ) );
+            me._on( me.$el.find( 'div.ost-consultant--dashboard--account' ), 'click', $.proxy( me.onAccountClick, me ) );
+            me._on( me.$el.find( 'div.ost-consultant--dashboard--cart' ), 'click', $.proxy( me.onCartClick, me ) );
+            me._on( me.$el.find( 'div.ost-consultant--dashboard--qr' ), 'click', $.proxy( me.onQrClick, me ) );
+            me._on( me.$el.find( 'div.ost-consultant--dashboard--search' ), 'click', $.proxy( me.onSearchClick, me ) );
+            me._on( me.$el.find( 'div.ost-consultant--dashboard--logout' ), 'click', $.proxy( me.onLogoutClick, me ) );
+
         },
 
 
@@ -102,6 +113,7 @@
         // ...
         onLogoutClick: function ( event )
         {
+            var me = this;
 
             $.ostFoundationJson.get(
                 {
@@ -143,9 +155,13 @@
 
 
 
-    $( "body.is--ctl-ostconsultant.is--act-dashboard" ).ostConsultantDashboard();
+    $( "body" ).ostConsultantDashboard();
+
+    $.subscribe('plugin/swEmotionLoader/onLoadEmotionFinished', function() {
 
 
+        $( "body div.emotion--wrapper" ).ostConsultantDashboard();
+    })
 
 
 
