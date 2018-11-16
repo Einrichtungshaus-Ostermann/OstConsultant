@@ -10,12 +10,6 @@
             <label><![CDATA[<b>Allgemeine Einstellungen</b>]]></label>
         </element>
 
-
-        <element type="button">
-            <name>defaultButton</name>
-            <label><![CDATA[<b>Allgemeine Einstellungen</b>]]></label>
-        </element>
-
         <element type="text">
             <name>homeUrl</name>
             <label>Verkäufer Startseite</label>

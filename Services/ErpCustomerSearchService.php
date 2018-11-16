@@ -19,7 +19,7 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
     /**
      * ...
      *
-     * @param string $search
+     * @param array $search
      *
      * @return array
      */
@@ -28,12 +28,31 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
         /* @var $api Api */
         $api = Shopware()->Container()->get('ost_erp_api.api');
 
-        // try to find customers
-        $customers = $api->findBy(
-            'customer',
-            //array( "UPPER( [customer.firstname] ) LIKE UPPER( '%" . $search . "%' ) OR UPPER( [customer.lastname] ) LIKE UPPER( '%" . $search . "%' )")
-            ['[customer.firstname] = ' . $search]
-        );
+
+        
+
+        if ( Shopware()->Container()->get('ost_erp_api.configuration')['adapter'] == "Mock" )
+        {
+            // try to find customers
+            $customers = $api->findBy(
+                'customer',
+                ['[customer.firstname] = ' . $search[0]]
+            );
+
+
+
+
+        }
+        else
+        {
+            $customers = $api->searchBy(
+                'customer',
+                $search
+            );
+
+        }
+
+
 
         // return them
         return $customers;

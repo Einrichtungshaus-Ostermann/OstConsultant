@@ -182,9 +182,12 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         /* @var $searchService ErpCustomerSearchServiceInterface */
         $searchService = $this->container->get('ost_consultant.erp_customer_search_service');
 
+
+        $arr = explode( " ", $search );
+
         // try to find customers
         $customers = $searchService->find(
-            $search
+            $arr
         );
 
         // and assign them

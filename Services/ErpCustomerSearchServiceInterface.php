@@ -17,7 +17,7 @@ interface ErpCustomerSearchServiceInterface
     /**
      * ...
      *
-     * @param string $search
+     * @param array $search
      *
      * @return array
      */
