@@ -110,6 +110,9 @@
                         $( "body form.panel.ost-consultant--register--form" ).show();
                         $( "body button.ost-consultant--display-registration" ).hide();
 
+
+                        me.$el.find( ".search-result-container" ).remove();
+
                     });
 
                 }

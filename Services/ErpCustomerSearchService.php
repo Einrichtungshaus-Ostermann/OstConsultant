@@ -29,7 +29,7 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
         $api = Shopware()->Container()->get('ost_erp_api.api');
 
 
-        
+
 
         if ( Shopware()->Container()->get('ost_erp_api.configuration')['adapter'] == "Mock" )
         {
@@ -51,6 +51,25 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
             );
 
         }
+
+
+
+        if ( count( $customers ) > 15 )
+        {
+            $bla = array();
+
+            foreach ( $customers as $customer )
+            {
+                if ( count( $bla ) > 15 )
+                    break;
+
+                array_push( $bla, $customer );
+
+            }
+
+            $customers = $bla;
+        }
+
 
 
 
