@@ -54,7 +54,7 @@
 {block name='frontend_register_index_dealer_register'}
 
 
-    <div class="panel register--personal ost-consultant--erp-customer-search">
+    <div class="panel register--personal ost-consultant--erp-customer-search" style="padding-bottom: 0;">
         <h2 class="panel--title is--underline">
             Kunde suchen
         </h2>
@@ -64,11 +64,11 @@
 
             Bitte geben Sie hier Informationen aus der IWM ein.<br /><br />
 
-            <input type="text">
+            <input type="text" placeholder="Suchbegriff eingeben...">
 
-            <button class="btn">Suchen</button>
+            <button class="btn">Kunde suchen</button>
 
-            <div class="search-result-container">
+            <div class="search-result-container" style="">
 
             </div>
 
@@ -76,11 +76,6 @@
     </div>
 
 
-
-
-    <button class="btn ost-consultant--display-registration" style="margin: 20px 0;">
-        Registrierung anzeigen
-    </button>
 
 
 
@@ -93,6 +88,20 @@
 
 
 
+{block name='frontend_register_index_login'}
+
+
+
+    <button class="btn ost-consultant--display-registration" style="float: right;">
+        Registrierung anzeigen
+    </button>
+
+
+
+    {$smarty.block.parent}
+
+
+{/block}
 
 
 

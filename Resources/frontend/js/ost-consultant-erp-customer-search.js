@@ -20,6 +20,12 @@
 
 
 
+        error: '<div class="alert is--error is--rounded"><div class="alert--icon"><i class="icon--element icon--warning"></i></div><div class="alert--content">#message#</div></div>',
+
+
+
+        minLength: 3,
+
 
 
         // on initialization
@@ -47,7 +53,17 @@
             // ...
             var me = this;
 
-            var input = me.$el.find( "input" ).val();
+            var input = me.$el.find( "input" ).val().trim();
+
+
+
+            if ( input.length < me.minLength )
+            {
+                var error = me.error.replace( "#message#", "Bitte geben Sie mindestens " + me.minLength.toString() + " Zeichen ein." );
+
+                me.$el.find( ".search-result-container" ).html( error );
+                return;
+            }
 
 
             $.ostFoundationAjax.get(
