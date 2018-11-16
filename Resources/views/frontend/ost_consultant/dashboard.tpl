@@ -32,6 +32,9 @@
         <br />
         <button class="is--button" data-ost-consultant-dashboard="logout">Logout</button>
 
+        <br />
+        <button class="is--button" data-ost-consultant-dashboard="login">Login</button>
+
 
     </div>
 {/block}

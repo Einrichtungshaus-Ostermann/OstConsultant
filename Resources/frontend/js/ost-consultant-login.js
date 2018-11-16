@@ -26,10 +26,13 @@
 
             me.configuration.loginUrl = ostConsultantConfiguration.loginUrl;
 
-            // ...
+            // double click on hidden button on every site
             me._on( me.$el.find( ".ost-consultant--login" ), 'dblclick', $.proxy( me.onLoginClick, me ) );
 
-            // ...
+            // login button on plugin dashboard
+            me._on( me.$el.find( 'button[data-ost-consultant-dashboard="login"]' ), 'click', $.proxy( me.onLoginClick, me ) );
+
+            // login button on emotion dashboard
             me._on( me.$el.find( "div.ost-consultant--dashboard--login" ), 'click', $.proxy( me.onLoginClick, me ) );
         },
 
@@ -105,8 +108,8 @@
 
     $.subscribe('plugin/swEmotionLoader/onLoadEmotionFinished', function() {
 
-        
-        $( "body div.emotion--wrapper" ).ostConsultantDashboard();
+
+        $( "body div.emotion--wrapper" ).ostConsultantLogin();
     })
 
 

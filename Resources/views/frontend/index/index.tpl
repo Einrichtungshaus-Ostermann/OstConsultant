@@ -53,7 +53,9 @@
 
     {$smarty.block.parent}
 
-    <div class="ost-consultant--badge" style="">VERKÄUEFER</div>
 
+
+
+    {action module="widgets" controller="OstConsultant" action="getBadge"}
 
 {/block}

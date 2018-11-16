@@ -75,4 +75,20 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
         // check if we are a logged in consultant
         $this->View()->assign('isConsultant', $consultantService->isConsultant());
     }
+
+
+
+
+    /**
+     * ...
+     */
+    public function getBadgeAction()
+    {
+        /* @var $consultantService ConsultantServiceInterface */
+        $consultantService = $this->container->get('ost_consultant.consultant_service');
+
+        // check if we are a logged in consultant
+        $this->View()->assign('isConsultant', $consultantService->isConsultant());
+        $this->View()->assign('consultant', $consultantService->getConsultant());
+    }
 }
