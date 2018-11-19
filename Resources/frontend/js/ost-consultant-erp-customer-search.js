@@ -111,7 +111,15 @@
                         $( "body button.ost-consultant--display-registration" ).hide();
 
 
-                        me.$el.find( ".search-result-container" ).remove();
+                        me.$el.find( ".search-result-container" ).html( "" );
+
+
+
+                        $( "body" ).find( ".ost-consultant--erp-customer-search" ).remove();
+                        $( "body" ).find( "form.ost-consultant--register--form div.register--content" ).css('margin-top','0');
+
+
+                        $("html, body").animate({ scrollTop: 0 }, "fast");
 
                     });
 
@@ -155,6 +163,14 @@
     $( "body button.ost-consultant--display-registration" ).on( "click", function() {
         $( "body form.panel.ost-consultant--register--form" ).show();
         $( "body button.ost-consultant--display-registration" ).hide();
+
+
+
+        $( "body" ).find( ".ost-consultant--erp-customer-search" ).remove();
+        $( "body" ).find( "form.ost-consultant--register--form div.register--content" ).css('margin-top','0');
+
+
+        $("html, body").animate({ scrollTop: 0 }, "fast");
     });
 
 

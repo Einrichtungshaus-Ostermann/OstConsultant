@@ -31,7 +31,7 @@
 
 
 
-            <div style="text-align: right;">
+            <div style="text-align: right; padding: 0 20px;">
                 <input class="btn is--primary is--large" type="submit" value="{s name="register-customer-button"}Kunde registrieren{/s}">
             </div>
         </div>

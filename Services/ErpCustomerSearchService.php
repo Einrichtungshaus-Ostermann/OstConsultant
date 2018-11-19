@@ -41,6 +41,29 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
 
 
 
+            $customers = array(
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0],
+                $customers[0]
+            );
+
 
         }
         else
