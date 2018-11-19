@@ -13,7 +13,8 @@
 
 
         configuration: {
-            loginUrl: null
+            loginUrl: null,
+            logoutUrl: null
         },
 
 
@@ -25,6 +26,7 @@
             var me = this;
 
             me.configuration.loginUrl = ostConsultantConfiguration.loginUrl;
+            me.configuration.logoutUrl = ostConsultantConfiguration.logoutUrl;
 
             // double click on hidden button on every site
             me._on( me.$el.find( ".ost-consultant--login" ), 'dblclick', $.proxy( me.onLoginClick, me ) );
@@ -43,6 +45,30 @@
         {
             // get this
             var me = this;
+
+
+
+            // are we already logged in?!
+            if ( $( "body" ).hasClass( "is--consultant" ) )
+            {
+
+                $.ostFoundationJson.get(
+                    {
+                        url: me.configuration.logoutUrl,
+                        method: "post"
+                    },
+                    function( response ) {
+
+                        $.ostFoundationLoadingIndicator.open();
+                        location.reload( true );
+
+                    }
+                );
+
+                return;
+
+            }
+
 
             // open number input
             $.ostFoundationNumberInput.open(
