@@ -258,8 +258,8 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
 
 
         $location = [
-            'controller' => "account",
-            'action' => "index",
+            'controller' => "checkout",
+            'action' => "cart",
         ];
 
 
