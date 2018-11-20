@@ -27,8 +27,6 @@ class ConsultantService implements ConsultantServiceInterface
         return  is_array($this->getConsultant());
     }
 
-
-
     /**
      * ...
      *

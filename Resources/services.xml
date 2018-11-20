@@ -3,46 +3,33 @@
            xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services
         http://symfony.com/schema/dic/services/services-1.0.xsd">
-
     <services>
 
-
+        <!-- configuration -->
         <service id="ost_consultant.configuration" class="Shopware\Components\Plugin\CachedConfigReader">
             <factory service="shopware.plugin.cached_config_reader" method="getByPluginName"/>
             <argument type="string">OstConsultant</argument>
         </service>
 
-
-
-
+        <!-- services -->
         <service id="ost_consultant.login_service" class="OstConsultant\Services\LoginService">
         </service>
-
-
-
 
         <service id="ost_consultant.consultant_service" class="OstConsultant\Services\ConsultantService">
         </service>
 
-
-
         <service id="ost_consultant.erp_customer_search_service" class="OstConsultant\Services\ErpCustomerSearchService">
         </service>
-
 
         <service id="ost_consultant.customer_search_service" class="OstConsultant\Services\CustomerSearchService">
         </service>
 
-
-
-
-
+        <!-- events and hooks -->
         <service id="ost_consultant.listeners.controllers.frontend" class="OstConsultant\Listeners\Controllers\Frontend">
             <argument type="string">%ost_consultant.view_dir%</argument>
             <argument type="service" id="ost_consultant.configuration" />
             <tag name="shopware.event_listener" method="onPostDispatch" event="Enlight_Controller_Action_PostDispatch_Frontend" />
         </service>
-
 
     </services>
 </container>

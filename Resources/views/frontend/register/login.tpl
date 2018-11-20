@@ -7,41 +7,25 @@
 
 
 
-
-
 {* replace login *}
 {block name='frontend_register_login_customer_title'}
+
     <h2 class="panel--title is--underline">Ich bin bereits Kunde</h2>
+
 {/block}
 
 
 
+{* ... *}
 {block name='frontend_register_login_form'}
 
-
     <div class="ost-consultant--customer-search">
-
-
-    Hier Kunde suchen und per Klick einloggen
-    <br /><br />
-
-    <input type="text">
-
-
-
-    <button class="btn">Suchen</button>
-
-    <br /><br />
-
-    <div class="search-result-container">
-
-
+        Hier Kunde suchen und per Klick einloggen
+        <br /><br />
+        <input type="text">
+        <button class="btn">Suchen</button>
+        <br /><br />
+        <div class="search-result-container"></div>
     </div>
-
-
-    </div>
-
-
-
 
 {/block}

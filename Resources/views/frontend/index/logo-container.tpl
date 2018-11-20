@@ -4,5 +4,3 @@
 
 {* set our namespace *}
 {namespace name="frontend/ost-consultant/index/logo-container"}
-
-

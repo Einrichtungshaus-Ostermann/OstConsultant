@@ -1,23 +1,27 @@
 
+/**
+ * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
+ *
+ * @package   OstConsultant
+ *
+ * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
+ * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
+ * @license   proprietary
+ */
+
 ;(function ($) {
 
     // use strict mode
     "use strict";
 
-
-
-
     // create plugin
     $.plugin( "ostConsultantLogin", {
 
-
-
+        // our configuration
         configuration: {
             loginUrl: null,
             logoutUrl: null
         },
-
-
 
         // on initialization
         init: function ()
@@ -25,6 +29,7 @@
             // get this
             var me = this;
 
+            // set configuration
             me.configuration.loginUrl = ostConsultantConfiguration.loginUrl;
             me.configuration.logoutUrl = ostConsultantConfiguration.logoutUrl;
 
@@ -38,27 +43,23 @@
             me._on( me.$el.find( "div.ost-consultant--dashboard--login" ), 'click', $.proxy( me.onLoginClick, me ) );
         },
 
-
-
         // ...
         onLoginClick: function ( event )
         {
             // get this
             var me = this;
 
-
-
             // are we already logged in?!
             if ( $( "body" ).hasClass( "is--consultant" ) )
             {
-
+                // try to logout
                 $.ostFoundationJson.get(
                     {
                         url: me.configuration.logoutUrl,
                         method: "post"
                     },
                     function( response ) {
-
+                        // reload current page
                         $.ostFoundationLoadingIndicator.open();
                         location.reload( true );
 
@@ -66,9 +67,7 @@
                 );
 
                 return;
-
             }
-
 
             // open number input
             $.ostFoundationNumberInput.open(
@@ -104,10 +103,6 @@
             );
         },
 
-
-
-
-
         // on destroy
         destroy: function()
         {
@@ -117,35 +112,16 @@
             // call the parent
             me._destroy();
         }
-
     });
 
-
-
-
-    
 
 
     // call our plugin
     $( "body" ).ostConsultantLogin();
 
-
-
-
+    // subscribe to loading emotions
     $.subscribe('plugin/swEmotionLoader/onLoadEmotionFinished', function() {
-
-
         $( "body div.emotion--wrapper" ).ostConsultantLogin();
     })
 
-
-
-
-
-
-
-
 })(jQuery);
-
-
-

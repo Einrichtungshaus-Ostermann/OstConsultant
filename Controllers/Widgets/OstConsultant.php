@@ -32,8 +32,6 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
         parent::preDispatch();
     }
 
-
-
     /**
      * ...
      *
@@ -51,8 +49,6 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
         ));
     }
 
-
-
     /**
      * ...
      */
@@ -61,8 +57,6 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
         // ...
         die('not implemented yet');
     }
-
-
 
     /**
      * ...
@@ -75,9 +69,6 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
         // check if we are a logged in consultant
         $this->View()->assign('isConsultant', $consultantService->isConsultant());
     }
-
-
-
 
     /**
      * ...

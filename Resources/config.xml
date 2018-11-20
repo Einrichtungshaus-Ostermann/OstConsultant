@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
-
     <elements>
-
 
         <element type="button">
             <name>defaultButton</name>
@@ -13,10 +11,8 @@
         <element type="text">
             <name>homeUrl</name>
             <label>Verkäufer Startseite</label>
-            <description>...</description>
+            <description>Die standard Startseite des Verkäufers.</description>
         </element>
 
-
     </elements>
-
 </config>

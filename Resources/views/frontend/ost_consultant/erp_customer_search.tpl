@@ -1,132 +1,64 @@
 
+{* set our namespace *}
+{namespace name="frontend/ost-consultant/erp-customer-search"}
 
 
 
-
+{* do we even have customers? *}
 {if $customers|@count > 0 }
 
+    <table class="ost-consultant--erp-customer-search--search-result">
+        <thead>
+        <tr>
+            <td>Kunde</td>
+            <td>Anschrift</td>
+            <td>PLZ</td>
+            <td>Stadt</td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
 
+        {foreach $customers as $customer}
 
+            <tr class="customer"
+                data-firstname="{$customer->getFirstname()}"
+                data-lastname="{$customer->getLastname()}"
+                data-salutation="{if $customer->getSalutation() == "01"}ms{else}mr{/if}"
+                data-phone="{$customer->getPhone()}"
+                data-street="{$customer->getStreet()}"
+                data-zipcode="{$customer->getZip()}"
+                data-city="{$customer->getCity()}"
+                data-country="{$customer->getCountry()}"
+            >
 
-    <style>
+                <td>
+                    {if $customer->getSalutation() == "01"}Frau{else}Herr{/if}
+                    {$customer->getFirstname()} {$customer->getLastname()}
+                </td>
 
-        table {
-            width: 100%;
-            margin-top: 20px;
-        }
+                <td>
+                    {$customer->getStreet()}
+                </td>
 
-        table tr td {
-            width: 20%;
-        }
+                <td>
+                    {$customer->getZip()}
+                </td>
 
-        table tr td:nth-child(1), table tr td:nth-child(2) {
-            width: 27.5%;
-        }
+                <td>
+                    {$customer->getCity()}
+                </td>
 
-        table tr td:nth-child(3), table tr td:nth-child(4), table tr td:nth-child(5) {
-            width: 15%;
-        }
+                <td>
+                    <button class="btn">Übernehmen</button>
+                </td>
 
-        table tr td:nth-child(5) {
-            text-align: center;
-        }
+            </tr>
 
+        {/foreach}
 
-    </style>
-
-
-
-<table>
-    <thead>
-    <tr>
-        <td>Kunde</td>
-        <td>Anschrift</td>
-        <td>PLZ</td>
-        <td>Stadt</td>
-        <td></td>
-
-
-    </tr>
-    </thead>
-    <tbody>
-
-
-
-    {foreach $customers as $customer}
-
-    <tr class="customer"
-        data-firstname="{$customer->getFirstname()}"
-        data-lastname="{$customer->getLastname()}"
-
-        data-salutation="{if $customer->getSalutation() == "01"}ms{else}mr{/if}"
-
-        data-phone="{$customer->getPhone()}"
-        data-street="{$customer->getStreet()}"
-        data-zipcode="{$customer->getZip()}"
-        data-city="{$customer->getCity()}"
-        data-country="{$customer->getCountry()}"
-    >
-
-        <td>
-
-
-            {if $customer->getSalutation() == "01"}Frau{else}Herr{/if}
-
-            {$customer->getFirstname()} {$customer->getLastname()}
-
-        </td>
-
-
-        <td>
-
-            {$customer->getStreet()}
-
-        </td>
-
-        <td>
-
-            {$customer->getZip()}
-
-
-        </td>
-
-
-        <td>
-
-            {$customer->getCity()}
-
-
-        </td>
-
-
-        <td>
-
-
-            <button class="btn">Übernehmen</button>
-
-
-        </td>
-
-
-
-    </tr>
-
-
-
-
-
-    {/foreach}
-
-
-
-
-
-    </tbody>
-</table>
-
-
-
-
+        </tbody>
+    </table>
 
 {else}
 
@@ -138,6 +70,5 @@
             Es wurden keine Kunden zu Ihrem Suchbegriff gefunden.
         </div>
     </div>
+
 {/if}
-
-

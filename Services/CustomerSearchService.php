@@ -16,20 +16,28 @@ use Shopware\Models\Customer\Customer;
 
 class CustomerSearchService implements CustomerSearchServiceInterface
 {
+    /**
+     * ...
+     *
+     * @param mixed $search
+     *
+     * @return array
+     */
     public function find($search)
     {
+        // get the list
         $query = $this->getListQuery($search);
 
-
+        // as array
         $arr = $query->getQuery()->getArrayResult();
 
-
+        // return them
         return $arr;
     }
 
-
-
     /**
+     * ...
+     * 
      * @param mixed $search
      *
      * @return \Shopware\Components\Model\QueryBuilder
@@ -71,7 +79,6 @@ class CustomerSearchService implements CustomerSearchServiceInterface
         $query->leftJoin('customer.attribute', 'attribute');
         $query->leftJoin('customer.group', 'groups');
 
-
         $builder = Shopware()->Container()->get('shopware.model.search_builder');
         $builder->addSearchTerm($query, $search, [
             'customer.number^2',
@@ -83,10 +90,6 @@ class CustomerSearchService implements CustomerSearchServiceInterface
             'billing.city^0.5',
             'billing.company^0.5',
         ]);
-
-
-
-
 
         return $query;
     }

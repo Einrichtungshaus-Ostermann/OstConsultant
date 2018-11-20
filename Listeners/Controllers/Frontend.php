@@ -24,16 +24,12 @@ class Frontend
      */
     protected $viewDir;
 
-
-
     /**
      * ...
      *
      * @var array
      */
     protected $configuration;
-
-
 
     /**
      * ...
@@ -48,8 +44,6 @@ class Frontend
         $this->configuration = $configuration;
     }
 
-
-
     /**
      * ...
      *
@@ -61,7 +55,6 @@ class Frontend
         $controller = $arguments->get('subject');
         $request = $controller->Request();
         $view = $controller->View();
-        $controllerName = $request->getControllerName();
 
         // add template dir
         $view->addTemplateDir($this->viewDir);

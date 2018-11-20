@@ -28,20 +28,16 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
         /* @var $api Api */
         $api = Shopware()->Container()->get('ost_erp_api.api');
 
-
-
-
-        if ( Shopware()->Container()->get('ost_erp_api.configuration')['adapter'] == "Mock" )
-        {
+        // are we not live?
+        if (Shopware()->Container()->get('ost_erp_api.configuration')['adapter'] === 'Mock') {
             // try to find customers
             $customers = $api->findBy(
                 'customer',
                 ['[customer.firstname] = ' . $search[0]]
             );
 
-
-
-            $customers = array(
+            // just add multiple customers
+            $customers = [
                 $customers[0],
                 $customers[0],
                 $customers[0],
@@ -62,39 +58,32 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
                 $customers[0],
                 $customers[0],
                 $customers[0]
-            );
-
-
-        }
-        else
-        {
+            ];
+        } else {
+            // search live
             $customers = $api->searchBy(
                 'customer',
                 $search
             );
-
         }
 
+        // do we have more than 15?!
+        if (count($customers) > 15) {
+            // less than 15 here
+            $bla = [];
 
-
-        if ( count( $customers ) > 15 )
-        {
-            $bla = array();
-
-            foreach ( $customers as $customer )
-            {
-                if ( count( $bla ) > 15 )
+            // loop every customer and break when > 15
+            foreach ($customers as $customer) {
+                if (count($bla) > 15) {
                     break;
+                }
 
-                array_push( $bla, $customer );
-
+                array_push($bla, $customer);
             }
 
+            // set the customers
             $customers = $bla;
         }
-
-
-
 
         // return them
         return $customers;

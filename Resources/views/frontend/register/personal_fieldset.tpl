@@ -7,17 +7,7 @@
 
 
 
-
-
-
-
-
-
-
-
 {* set default password and remove description *}
-
-
 {block name='frontend_register_personal_fieldset_input_password'}
     <input type="hidden" name="register[personal][password]" value="12345678" id="register_personal_password" class="register--field password" />
 {/block}
@@ -32,10 +22,9 @@
 
 
 
-
-
-
+{* ... *}
 {block name='frontend_register_personal_fieldset_input_mail'}
+
     <div class="register--email">
         <input autocomplete="section-personal email"
                name="register[personal][email]"
@@ -57,9 +46,8 @@
                    class="register--field emailConfirmation" />
         </div>
     {/if}
+
 {/block}
-
-
 
 
 

@@ -21,8 +21,6 @@ interface ConsultantServiceInterface
      */
     public function isConsultant();
 
-
-
     /**
      * ...
      *

@@ -7,9 +7,5 @@
 
 
 
-
-
 {* remove newsletter *}
 {block name='frontend_account_index_newsletter_settings'}{/block}
-
-
