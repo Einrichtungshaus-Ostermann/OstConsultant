@@ -31,6 +31,8 @@
         <button class="is--button" data-ost-consultant-dashboard="login">Login</button>
         <br />
         <button class="is--button" data-ost-consultant-dashboard="calculator">Taschenrechner</button>
+        <br />
+        <button class="is--button" data-ost-consultant-dashboard="calendar">Kalender</button>
     </div>
 
 {/block}
