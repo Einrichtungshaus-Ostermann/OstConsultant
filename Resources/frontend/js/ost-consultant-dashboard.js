@@ -38,6 +38,7 @@
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="qr"]' ), 'click', $.proxy( me.onQrClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="search"]' ), 'click', $.proxy( me.onSearchClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="logout"]' ), 'click', $.proxy( me.onLogoutClick, me ) );
+            me._on( me.$el.find( 'button[data-ost-consultant-dashboard="calculator"]' ), 'click', $.proxy( me.onCalculatorClick, me ) );
 
             // optional selectors for emotion elements
             me._on( me.$el.find( 'div.ost-consultant--dashboard--home' ), 'click', $.proxy( me.onHomeClick, me ) );
@@ -46,6 +47,7 @@
             me._on( me.$el.find( 'div.ost-consultant--dashboard--qr' ), 'click', $.proxy( me.onQrClick, me ) );
             me._on( me.$el.find( 'div.ost-consultant--dashboard--search' ), 'click', $.proxy( me.onSearchClick, me ) );
             me._on( me.$el.find( 'div.ost-consultant--dashboard--logout' ), 'click', $.proxy( me.onLogoutClick, me ) );
+            me._on( me.$el.find( 'div.ost-consultant--dashboard--calculator' ), 'click', $.proxy( me.onCalculatorClick, me ) );
         },
 
         // ...
@@ -75,6 +77,13 @@
         // ...
         onQrClick: function ( event )
         {
+        },
+
+        // ...
+        onCalculatorClick: function ( event )
+        {
+            // open calculator
+            $.ostFoundationCalculator.open( "Taschenrechner", {} );
         },
 
         // ...

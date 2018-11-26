@@ -37,7 +37,7 @@ class CustomerSearchService implements CustomerSearchServiceInterface
 
     /**
      * ...
-     * 
+     *
      * @param mixed $search
      *
      * @return \Shopware\Components\Model\QueryBuilder
