@@ -89,13 +89,29 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         // get the login
         $number = $this->Request()->getParam('number');
 
-        /* @var $loginService LoginServiceInterface */
-        $loginService = $this->container->get('ost_consultant.login_service');
+        // ...
+        try
+        {
+            /* @var $loginService LoginServiceInterface */
+            $loginService = $this->container->get('ost_consultant.login_service');
 
-        // try to log in
-        $loggedIn = $loginService->login(
-            $number
-        );
+            // try to log in
+            $loggedIn = $loginService->login(
+                $number
+            );
+
+        }
+        catch ( \Exception $exception )
+        {
+            // create response
+            $response = [
+                'success' => false
+            ];
+
+            // echo as json encoded string and die
+            echo json_encode($response);
+            die();
+        }
 
         // create response
         $response = [
