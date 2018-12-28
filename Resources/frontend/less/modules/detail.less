@@ -1,7 +1,9 @@
 
-// ...
-html body.is--ctl-detail.is--consultant div.content.product--details div.product--detail-upper div.product--buybox form.buybox--form {
-    display: inherit;
+// show buy button by default when logged in
+html body.is--ctl-detail.is--consultant {
+    div.content.product--details div.product--detail-upper div.product--buybox form.buybox--form {
+        display: inherit;
+    }
 }
 
 
@@ -24,5 +26,13 @@ html body.is--consultant {
             display: table-cell;
         }
     }
+}
 
+
+
+// remove beny tab if we arent logged in as consultant
+html body:not(.is--consultant) {
+    .js--tab-menu .tab--link.has--content[data-tabname="ost-beny"] {
+        display: none;
+    }
 }
