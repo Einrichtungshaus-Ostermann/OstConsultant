@@ -11,6 +11,9 @@
  * 1.0.1
  * - added removal of beny price tab if not logged in as consultant
  *
+ * 1.0.2
+ * - fixed erp customer search for mock adapter
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

@@ -36,29 +36,31 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
                 ['[customer.firstname] = ' . $search[0]]
             );
 
-            // just add multiple customers
-            $customers = [
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0],
-                $customers[0]
-            ];
+            // did we find at least one customer?
+            if ( count( $customers ) > 0 )
+                // just add multiple customers
+                $customers = [
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0],
+                    $customers[0]
+                ];
         } else {
             // search live
             $customers = $api->searchBy(
