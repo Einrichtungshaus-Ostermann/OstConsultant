@@ -13,6 +13,8 @@
  *
  * 1.0.2
  * - fixed erp customer search for mock adapter
+ * - added listener to erp-customer-search form to auto-submit when
+ *   typing enter
  *
  * @package   OstConsultant
  *
