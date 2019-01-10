@@ -54,10 +54,10 @@
 {* remove guest accounts *}
 {block name='frontend_register_personal_fieldset_skip_login'}
 
-        <input type="hidden"
-               value="0"
-               id="register_personal_skipLogin"
-               name="register[personal][accountmode]"
-               class="register--checkbox chkbox"/>
+    <input type="hidden"
+           value="0"
+           id="register_personal_skipLogin"
+           name="register[personal][accountmode]"
+           class="register--checkbox chkbox"/>
 
 {/block}

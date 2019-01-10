@@ -48,6 +48,7 @@
 
 
 
+{* ... *}
 {block name='frontend_register_index_login'}
 
     <button class="btn ost-consultant--display-registration" style="float: right;">

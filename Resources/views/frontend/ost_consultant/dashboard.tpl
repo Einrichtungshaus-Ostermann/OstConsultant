@@ -33,11 +33,8 @@
         <button class="is--button" data-ost-consultant-dashboard="calculator">Taschenrechner</button>
         <br />
         <button class="is--button" data-ost-consultant-dashboard="calendar">Kalender</button>
-
         <br />
         <a class="btn" href="/OstArticleSearch/search">Artikelsuche</a>
-
-
     </div>
 
 {/block}

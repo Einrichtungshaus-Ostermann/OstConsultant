@@ -3,7 +3,9 @@
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
  *
- * Consultant Features for inhouse
+ * Removes the default order process within the inhouse shop and replaces
+ * it with consultant features. Logged in consultants are the only ones who
+ * can actually order articles.
  *
  * 1.0.0
  * - initial release
@@ -15,6 +17,9 @@
  * - fixed erp customer search for mock adapter
  * - added listener to erp-customer-search form to auto-submit when
  *   typing enter
+ *
+ * 1.0.3
+ * - fixed plugin name
  *
  * @package   OstConsultant
  *

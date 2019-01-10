@@ -16,7 +16,7 @@
 
 
 
-{* ... *}
+{* replace register form with search form *}
 {block name='frontend_register_login_form'}
 
     <div class="ost-consultant--customer-search">
