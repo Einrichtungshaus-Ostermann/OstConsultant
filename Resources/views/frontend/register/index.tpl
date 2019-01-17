@@ -32,12 +32,11 @@
 
     <div class="panel register--personal ost-consultant--erp-customer-search" style="padding-bottom: 0;">
         <h2 class="panel--title is--underline">
-            Kunde suchen
+            {s name='search-customer-headline'}EINFACH IHREN KUNDEN FINDEN{/s}
         </h2>
         <div class="panel--body is--wide">
-            Bitte geben Sie hier Informationen aus der IWM ein.<br /><br />
-            <input type="text" placeholder="Suchbegriff eingeben...">
-            <button class="btn">Kunde suchen</button>
+            <input style="width: 70%;" type="text" placeholder="{s name='search-customer-placeholder' force}Name [und/oder] Vorname [und/oder] PLZ [und/oder] Wohnort eingeben...{/s}">
+            <button style="width:20%; float: right; text-align: center;" class="btn is--primary">{s name='search-customer-button'}Kunden finden{/s}</button>
             <div class="search-result-container" style=""></div>
         </div>
     </div>
@@ -48,11 +47,10 @@
 
 
 
-{* ... *}
 {block name='frontend_register_index_login'}
 
     <button class="btn ost-consultant--display-registration" style="float: right;">
-        Registrierung anzeigen
+        {s name='show-registration-form-button'}Kunde neu anlegen{/s}
     </button>
 
     {$smarty.block.parent}
