@@ -11,9 +11,9 @@
         <thead>
         <tr>
             <td>Kunde</td>
-            <td>Anschrift</td>
+            <td>Straße / Nr.</td>
             <td>PLZ</td>
-            <td>Stadt</td>
+            <td>Wohnort</td>
             <td></td>
         </tr>
         </thead>
@@ -50,7 +50,7 @@
                 </td>
 
                 <td>
-                    <button class="btn">Übernehmen</button>
+                    <button class="btn">{s name='submit-customer-button'}Kunde übernehmen{/s}</button>
                 </td>
 
             </tr>

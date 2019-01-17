@@ -24,6 +24,9 @@
  * 1.0.4
  * - optimized registration / customer search
  *
+ * 1.0.5
+ * - fixed registration / customer search
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
