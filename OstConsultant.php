@@ -21,6 +21,9 @@
  * 1.0.3
  * - fixed plugin name
  *
+ * 1.0.4
+ * - optimized registration / customer search
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
