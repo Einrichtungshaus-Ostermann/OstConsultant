@@ -27,6 +27,9 @@
  * 1.0.5
  * - fixed registration / customer search
  *
+ * 1.0.6
+ * - added germany as default country for every customer
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

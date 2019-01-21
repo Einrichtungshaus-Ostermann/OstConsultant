@@ -97,8 +97,11 @@
                             $form.find( "input#" + inputs[key] ).val( $customer.data( inputs[key] ) );
 
                         // set country
-                        if ( $customer.data( "country" ) == "D" )
-                            $form.find( "select#country" ).val( "2" );
+                        //if ( $customer.data( "country" ) == "D" )
+                        //    $form.find( "select#country" ).val( "2" );
+
+                        // always force germany
+                        $form.find( "select#country" ).val( "2" );
 
                         // set html
                         $( "body form.panel.ost-consultant--register--form" ).show();
