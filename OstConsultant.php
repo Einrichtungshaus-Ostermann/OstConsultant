@@ -29,6 +29,7 @@
  *
  * 1.0.6
  * - added germany as default country for every customer
+ * - added logout after finishing an order
  *
  * @package   OstConsultant
  *

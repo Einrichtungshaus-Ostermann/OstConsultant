@@ -31,5 +31,9 @@
             <tag name="shopware.event_listener" method="onPostDispatch" event="Enlight_Controller_Action_PostDispatch_Frontend" />
         </service>
 
+        <service id="ost_consultant.listeners.controllers.frontend.checkout.finish" class="OstConsultant\Listeners\Controllers\Frontend\Checkout">
+            <tag name="shopware.event_listener" method="onPostDispatch" event="Enlight_Controller_Action_PostDispatchSecure_Frontend_Checkout" />
+        </service>
+
     </services>
 </container>
