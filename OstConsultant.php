@@ -31,6 +31,9 @@
  * - added germany as default country for every customer
  * - added logout after finishing an order
  *
+ * 1.0.7
+ * - added trimming of every customer data for the registration form
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

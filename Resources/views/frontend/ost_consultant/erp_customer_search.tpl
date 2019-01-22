@@ -22,14 +22,14 @@
         {foreach $customers as $customer}
 
             <tr class="customer"
-                data-firstname="{$customer->getFirstname()}"
-                data-lastname="{$customer->getLastname()}"
+                data-firstname="{$customer->getFirstname()|trim}"
+                data-lastname="{$customer->getLastname()|trim}"
                 data-salutation="{if $customer->getSalutation() == "01"}ms{else}mr{/if}"
-                data-phone="{$customer->getPhone()}"
-                data-street="{$customer->getStreet()}"
-                data-zipcode="{$customer->getZip()}"
-                data-city="{$customer->getCity()}"
-                data-country="{$customer->getCountry()}"
+                data-phone="{$customer->getPhone()|trim}"
+                data-street="{$customer->getStreet()|trim}"
+                data-zipcode="{$customer->getZip()|trim}"
+                data-city="{$customer->getCity()|trim}"
+                data-country="{$customer->getCountry()|trim}"
             >
 
                 <td>
