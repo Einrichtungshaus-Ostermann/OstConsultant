@@ -69,24 +69,6 @@ class ErpCustomerSearchService implements ErpCustomerSearchServiceInterface
             );
         }
 
-        // do we have more than 15?!
-        if (count($customers) > 15) {
-            // less than 15 here
-            $bla = [];
-
-            // loop every customer and break when > 15
-            foreach ($customers as $customer) {
-                if (count($bla) > 15) {
-                    break;
-                }
-
-                array_push($bla, $customer);
-            }
-
-            // set the customers
-            $customers = $bla;
-        }
-
         // return them
         return $customers;
     }

@@ -34,6 +34,9 @@
  * 1.0.7
  * - added trimming of every customer data for the registration form
  *
+ * 1.0.8
+ * - added info for erp customer search result if more entities were found
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

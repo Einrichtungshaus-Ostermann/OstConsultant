@@ -19,7 +19,13 @@
         </thead>
         <tbody>
 
-        {foreach $customers as $customer}
+        {$maxCustomers = 15}
+
+        {foreach key=customerforeach item=customer from=$customers}
+
+            {if $customer@iteration > $maxCustomers}
+                {break}
+            {/if}
 
             <tr class="customer"
                 data-firstname="{$customer->getFirstname()|trim}"
@@ -59,6 +65,22 @@
 
         </tbody>
     </table>
+
+    {if count($customers) > $maxCustomers}
+
+        {$more = count($customers) - $maxCustomers}
+
+        <div class="alert is--warning is--rounded">
+            <div class="alert--icon">
+                <i class="icon--element icon--warning"></i>
+            </div>
+            <div class="alert--content">
+                Für Ihre Suchbegriffe wurden {$more} weitere Kunden gefunden.<br />
+                Bitte grenzen Sie die Suche weiter ein.
+            </div>
+        </div>
+
+    {/if}
 
 {else}
 
