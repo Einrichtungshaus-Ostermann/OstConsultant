@@ -37,6 +37,9 @@
  * 1.0.8
  * - added info for erp customer search result if more entities were found
  *
+ * 1.0.9
+ * - added email address of customer search to registration form
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

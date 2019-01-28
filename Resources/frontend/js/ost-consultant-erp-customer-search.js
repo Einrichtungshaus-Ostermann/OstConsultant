@@ -100,6 +100,9 @@
                         //if ( $customer.data( "country" ) == "D" )
                         //    $form.find( "select#country" ).val( "2" );
 
+                        // email address
+                        $form.find( "input#register_personal_email" ).val( $customer.data( "email" ) );
+
                         // always force germany
                         $form.find( "select#country" ).val( "2" );
 

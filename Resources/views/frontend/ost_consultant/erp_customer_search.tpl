@@ -36,6 +36,7 @@
                 data-zipcode="{$customer->getZip()|trim}"
                 data-city="{$customer->getCity()|trim}"
                 data-country="{$customer->getCountry()|trim}"
+                data-email="{$customer->getEmail()|trim}"
             >
 
                 <td>
