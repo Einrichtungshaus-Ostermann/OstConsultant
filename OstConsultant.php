@@ -40,6 +40,9 @@
  * 1.0.9
  * - added email address of customer search to registration form
  *
+ * 1.0.10
+ * - changed title of login button
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

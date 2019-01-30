@@ -72,7 +72,9 @@
             // open number input
             $.ostFoundationNumberInput.open(
                 "Anmeldung als Verkäufer",
-                {},
+                {
+                    submitButton: "Anmelden"
+                },
                 function( number ) {
                     // try to login
                     $.ostFoundationJson.get(
