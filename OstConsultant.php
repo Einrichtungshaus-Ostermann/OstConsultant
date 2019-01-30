@@ -42,6 +42,7 @@
  *
  * 1.0.10
  * - changed title of login button
+ * - added test erp customer search without calling the erp api
  *
  * @package   OstConsultant
  *

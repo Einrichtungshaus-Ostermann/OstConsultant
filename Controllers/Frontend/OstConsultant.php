@@ -180,10 +180,32 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         // explode the search for multiple search termans
         $arr = explode(' ', $search);
 
-        // try to find customers
-        $customers = $searchService->find(
-            $arr
-        );
+        // force test data without calling the api
+        if ( count($arr) == 1 && $arr[0] == "eikebw")
+        {
+            // test struct data
+            $struct = new \OstErpApi\Struct\Customer();
+            $struct->setNumber(123456);
+            $struct->setEmail("e.brandt-warneke@ostermann.de");
+            $struct->setSalutation("02");
+            $struct->setFirstName("Eike");
+            $struct->setLastName("Brandt-Warneke");
+            $struct->setPhone("01234 56789");
+            $struct->setStreet("Straße 1");
+            $struct->setZip("12345");
+            $struct->setCity("Stadt");
+            $struct->setCountry("D");
+
+            // this customer as result
+            $customers = array($struct);
+        }
+        else
+        {
+            // try to find customers
+            $customers = $searchService->find(
+                $arr
+            );
+        }
 
         // and assign them
         $this->View()->assign('customers', $customers);
