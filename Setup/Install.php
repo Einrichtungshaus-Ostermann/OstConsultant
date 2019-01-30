@@ -50,6 +50,29 @@ class Install
     /**
      * ...
      *
+     * @var array
+     */
+    public static $attributes = [
+        's_order_attributes' => [
+            [
+                'column' => 'ost_consultant_advance_payment',
+                'type'   => 'float',
+                'data'   => [
+                    'label'            => 'Anzahlung',
+                    'helpText'         => 'Die Anzahlung, die der Kunde geleistet hat.',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => false,
+                    'position'         => 120
+
+                ]
+            ]
+        ]
+    ];
+
+    /**
+     * ...
+     *
      * @param Plugin         $plugin
      * @param InstallContext $context
      * @param ModelManager   $modelManager

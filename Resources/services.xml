@@ -35,5 +35,9 @@
             <tag name="shopware.event_listener" method="onPostDispatch" event="Enlight_Controller_Action_PostDispatchSecure_Frontend_Checkout" />
         </service>
 
+        <service id="ost_consultant.listeners.core.s_order.filter_attributes" class="OstConsultant\Listeners\Core\sOrder">
+            <tag name="shopware.event_listener" method="filterAttributes" event="Shopware_Modules_Order_SaveOrder_FilterAttributes" />
+        </service>
+
     </services>
 </container>

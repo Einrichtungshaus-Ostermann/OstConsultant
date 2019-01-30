@@ -44,6 +44,9 @@
  * - changed title of login button
  * - added test erp customer search without calling the erp api
  *
+ * 1.1.0
+ * - added optional advance payment to checkout process
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
@@ -106,7 +109,9 @@ class OstConsultant extends Plugin
         // update it to current version
         $updater = new Setup\Update(
             $this,
-            $context
+            $context,
+            $this->container->get('models'),
+            $this->container->get('shopware_attribute.crud_service')
         );
         $updater->install();
 
@@ -124,7 +129,9 @@ class OstConsultant extends Plugin
         // update the plugin
         $updater = new Setup\Update(
             $this,
-            $context
+            $context,
+            $this->container->get('models'),
+            $this->container->get('shopware_attribute.crud_service')
         );
         $updater->update($context->getCurrentVersion());
 

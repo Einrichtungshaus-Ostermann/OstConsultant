@@ -16,6 +16,7 @@ use Shopware\Bundle\AttributeBundle\Service\CrudService;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\UninstallContext;
+use Exception;
 
 class Uninstall
 {
@@ -71,5 +72,31 @@ class Uninstall
      */
     public function uninstall()
     {
+        // ...
+        $this->uninstallAttributes();
+    }
+
+    /**
+     * ...
+     *
+     * @throws \Exception
+     */
+    public function uninstallAttributes()
+    {
+        // ...
+        foreach (Install::$attributes as $table => $attributes) {
+            foreach ($attributes as $attribute) {
+                try {
+                    $this->crudService->delete(
+                        $table,
+                        $attribute['column']
+                    );
+                } catch (Exception $exception) {
+                }
+            }
+        }
+
+        // ...
+        $this->modelManager->generateAttributeModels(array_keys(Install::$attributes));
     }
 }
