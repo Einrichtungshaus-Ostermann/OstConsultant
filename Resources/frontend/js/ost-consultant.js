@@ -1,4 +1,3 @@
-
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
  *

@@ -35,9 +35,7 @@
                 </div>
             </div>
             <div class="table--tr block-group row--product is--last-row">
-                Möchten Sie eine Anzahlung leisten?
-                <br />
-                <input type="text" data-ost-consultant-advance-payment-input="true" style="width: 150px;" disabled/>
+                <input type="text" data-ost-consultant-advance-payment-input="true" disabled/>
                 <button class="btn" data-ost-consultant-advance-payment-button="true">Anzahlung</button>
             </div>
         </div>

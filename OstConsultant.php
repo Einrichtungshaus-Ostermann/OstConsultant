@@ -47,6 +47,9 @@
  * 1.1.0
  * - added optional advance payment to checkout process
  *
+ * 1.1.1
+ * - fixed css
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

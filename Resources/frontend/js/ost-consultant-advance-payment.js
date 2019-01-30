@@ -1,4 +1,3 @@
-
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
  *
@@ -25,6 +24,7 @@
 
             // ...
             me._on( me.$el.find( 'button[data-ost-consultant-advance-payment-button="true"]' ), 'click', $.proxy( me.onButtonClick, me ) );
+            me._on( me.$el.find( 'input[data-ost-consultant-advance-payment-input="true"]' ), 'click', $.proxy( me.onButtonClick, me ) );
         },
 
         // ...
