@@ -28,7 +28,7 @@
         <service id="ost_consultant.listeners.controllers.frontend" class="OstConsultant\Listeners\Controllers\Frontend">
             <argument type="string">%ost_consultant.view_dir%</argument>
             <argument type="service" id="ost_consultant.configuration" />
-            <tag name="shopware.event_listener" method="onPostDispatch" event="Enlight_Controller_Action_PostDispatch_Frontend" />
+            <tag name="shopware.event_listener" method="onPreDispatch" event="Enlight_Controller_Action_PreDispatch_Frontend" />
         </service>
 
         <service id="ost_consultant.listeners.controllers.frontend.checkout.finish" class="OstConsultant\Listeners\Controllers\Frontend\Checkout">
