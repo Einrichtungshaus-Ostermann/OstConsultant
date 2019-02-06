@@ -20,6 +20,7 @@
             logoutUrl:            '{url controller="OstConsultant" action="logout"}',
             customerSearchUrl:    '{url controller="OstConsultant" action="customerSearch"}',
             erpCustomerSearchUrl: '{url controller="OstConsultant" action="erpCustomerSearch"}',
+            resetUrl:             '{url controller="OstConsultant" action="reset"}',
         };
 
     </script>

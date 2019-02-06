@@ -18,7 +18,8 @@
 
         // our configration
         configuration: {
-            logoutUrl: null
+            logoutUrl: null,
+            resetUrl: null
         },
 
         // on initialization
@@ -29,6 +30,7 @@
 
             // set configuration
             me.configuration.logoutUrl = ostConsultantConfiguration.logoutUrl;
+            me.configuration.resetUrl = ostConsultantConfiguration.resetUrl;
 
             // dashboard buttons
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="home"]' ), 'click', $.proxy( me.onHomeClick, me ) );
@@ -39,6 +41,7 @@
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="logout"]' ), 'click', $.proxy( me.onLogoutClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="calculator"]' ), 'click', $.proxy( me.onCalculatorClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="calendar"]' ), 'click', $.proxy( me.onCalendarClick, me ) );
+            me._on( me.$el.find( 'button[data-ost-consultant-dashboard="reset"]' ), 'click', $.proxy( me.onResetClick, me ) );
 
             // optional selectors for emotion elements
             me._on( me.$el.find( 'div.ost-consultant--dashboard--home' ), 'click', $.proxy( me.onHomeClick, me ) );
@@ -49,6 +52,7 @@
             me._on( me.$el.find( 'div.ost-consultant--dashboard--logout' ), 'click', $.proxy( me.onLogoutClick, me ) );
             me._on( me.$el.find( 'div.ost-consultant--dashboard--calculator' ), 'click', $.proxy( me.onCalculatorClick, me ) );
             me._on( me.$el.find( 'div.ost-consultant--dashboard--calendar' ), 'click', $.proxy( me.onCalendarClick, me ) );
+            me._on( me.$el.find( 'div.ost-consultant--dashboard--reset' ), 'click', $.proxy( me.onResetClick, me ) );
         },
 
         // ...
@@ -128,6 +132,25 @@
                     // reload current page
                     $.ostFoundationLoadingIndicator.open();
                     window.location.href = "/";
+                }
+            );
+        },
+
+        // ...
+        onResetClick: function ( event )
+        {
+            // get this
+            var me = this;
+
+            // do logout
+            $.ostFoundationJson.get(
+                {
+                    url: me.configuration.resetUrl,
+                    method: "post"
+                },
+                function( response ) {
+                    $.ostFoundationLoadingIndicator.open();
+                    location.reload();
                 }
             );
         },

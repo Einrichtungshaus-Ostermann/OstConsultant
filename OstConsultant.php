@@ -50,6 +50,9 @@
  * 1.1.1
  * - fixed css
  *
+ * 1.1.2
+ * - added reset button to dashboard
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

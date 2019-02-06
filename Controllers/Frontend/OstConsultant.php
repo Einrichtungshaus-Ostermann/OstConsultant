@@ -393,4 +393,28 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         // log in via module
         Shopware()->Modules()->Admin()->sLogin(true);
     }
+
+    /**
+     * ...
+     */
+    public function resetAction()
+    {
+        // save the consultant session
+        $consultant = Shopware()->Container()->get('ost_consultant.consultant_service')->getConsultant();
+
+        // logout
+        Shopware()->Modules()->Admin()->logout();
+
+        // login as consultant again
+        Shopware()->Container()->get('ost_consultant.login_service')->login((string) $consultant['number']);
+
+        // create response
+        $response = [
+            'success' => true
+        ];
+
+        // echo as json encoded string and die
+        echo json_encode($response);
+        die();
+    }
 }
