@@ -399,14 +399,19 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
      */
     public function resetAction()
     {
+        // are we logged in?
+        $isConsultant = Shopware()->Container()->get('ost_consultant.consultant_service')->isConsultant();
+
         // save the consultant session
         $consultant = Shopware()->Container()->get('ost_consultant.consultant_service')->getConsultant();
 
         // logout
         Shopware()->Modules()->Admin()->logout();
 
-        // login as consultant again
-        Shopware()->Container()->get('ost_consultant.login_service')->login((string) $consultant['number']);
+        // login as consultant again if we were logged in
+        if ( $isConsultant == true )
+            // log in again
+            Shopware()->Container()->get('ost_consultant.login_service')->login((string) $consultant['number']);
 
         // create response
         $response = [

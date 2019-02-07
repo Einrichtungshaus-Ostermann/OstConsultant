@@ -53,6 +53,9 @@
  * 1.1.2
  * - added reset button to dashboard
  *
+ * 1.1.3
+ * - fixed reset for logged out users
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
