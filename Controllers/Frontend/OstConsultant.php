@@ -191,9 +191,27 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
             $struct->setFirstName("Eike");
             $struct->setLastName("Brandt-Warneke");
             $struct->setPhone("01234 56789");
-            $struct->setStreet("Straße 1");
-            $struct->setZip("12345");
-            $struct->setCity("Stadt");
+            $struct->setStreet("Trienendorfer Straße 142");
+            $struct->setZip("58300");
+            $struct->setCity("Wetter");
+            $struct->setCountry("D");
+
+            // this customer as result
+            $customers = array($struct);
+        }
+        elseif ( count($arr) == 1 && $arr[0] == "oliverh")
+        {
+            // test struct data
+            $struct = new \OstErpApi\Struct\Customer();
+            $struct->setNumber(123456);
+            $struct->setEmail("o.hohmeier@ostermann.de");
+            $struct->setSalutation("02");
+            $struct->setFirstName("Oliver");
+            $struct->setLastName("Hohmeier");
+            $struct->setPhone("01234 56789");
+            $struct->setStreet("Im Kempken 16");
+            $struct->setZip("44799");
+            $struct->setCity("Bochum");
             $struct->setCountry("D");
 
             // this customer as result

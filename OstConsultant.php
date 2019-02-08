@@ -56,6 +56,9 @@
  * 1.1.3
  * - fixed reset for logged out users
  *
+ * 1.1.4
+ * - fixed customer erp search mock data
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
