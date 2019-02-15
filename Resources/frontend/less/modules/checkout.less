@@ -15,4 +15,135 @@ html body.is--ctl-checkout.is--act-confirm {
             width: 150px;
         }
     }
+    .ost-consultant--head-discount-container {
+        border-top: 1px solid #dadae5;
+        border-bottom: none;
+        padding: 20px 0;
+        text-align: right;
+    }
+}
+
+
+
+
+// remove discount button in confirm by default
+html body.is--ctl-checkout.is--act-confirm {
+    .product--table {
+        .table--tr.row--product {
+            .panel--td.column--actions {
+                .ost-consultant--discount-button {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+// remove action columns for discounts in confirm and finish
+html body.is--ctl-checkout.is--act-confirm,
+html body.is--ctl-checkout.is--act-finish {
+    .product--table {
+        .table--tr.row--rebate .panel--td.column--actions {
+            display: none;
+        }
+    }
+}
+
+
+
+// set remove product and discout button
+html body.is--ctl-checkout.is--act-cart {
+    .product--table {
+        .table--tr.row--product .panel--td.column--actions {
+            button.ost-consultant--discount-button {
+                width: 50px;
+                text-align: center;
+                font-weight: bold;
+            }
+            form {
+                display: inline;
+                button {
+                    width: 50px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            }
+        }
+        .table--tr.row--rebate .panel--td.column--actions {
+            form {
+                display: inline;
+                button {
+                    width: 50px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+
+
+// set remove product and give discount buttons for every viewport
+html body.is--ctl-checkout.is--act-cart {
+
+    @media screen and (min-width: @tabletViewportWidth) {
+        .product--table {
+            .table--header .panel--th.column--product,
+            .table--tr.row--product .column--product {
+                width: 41%;
+            }
+            .table--header .panel--th.column--quantity,
+            .table--tr.row--product .column--quantity {
+                width: 12%;
+            }
+            .table--header .panel--th.column--actions,
+            .table--tr.row--product .panel--td.column--actions,
+            .table--tr.row--rebate .panel--td.column--actions {
+                width: 18%;
+            }
+            .table--tr.row--rebate .column--product {
+                width: 67.5%;
+            }
+        }
+    }
+
+    @media screen and (min-width: @tabletLandscapeViewportWidth) {
+        .product--table {
+            .table--header .panel--th.column--product,
+            .table--tr.row--product .column--product {
+                width: 45%;
+            }
+            .table--header .panel--th.column--actions,
+            .table--tr.row--product .panel--td.column--actions,
+            .table--tr.row--rebate .panel--td.column--actions {
+                width: 14%;
+            }
+            .table--tr.row--rebate .column--product {
+                width: 71.5%;
+            }
+        }
+    }
+
+    @media screen and (min-width: @desktopViewportWidth) {
+        .product--table {
+            .table--header .panel--th.column--product,
+            .table--tr.row--product .column--product {
+                width: 45%;
+            }
+            .table--header .panel--th.column--actions,
+            .table--tr.row--product .panel--td.column--actions {
+                width: 14%;
+                padding-top: 30px;
+            }
+            .table--tr.row--rebate .panel--td.column--actions {
+                width: 14%;
+                padding-top: 16px;
+            }
+            .table--tr.row--rebate .column--product {
+                width: 71.5%;
+            }
+        }
+    }
+
 }

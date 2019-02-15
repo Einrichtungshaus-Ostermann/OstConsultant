@@ -1,3 +1,5 @@
+<?php declare(strict_types=1);
+
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
  *
@@ -8,10 +10,10 @@
  * @license   proprietary
  */
 
-@import "modules/detail";
-@import "modules/global";
-@import "modules/register";
-@import "modules/ost-consultant";
-@import "modules/ost-consultant--discount-selection";
-@import "modules/header";
-@import "modules/checkout";
+namespace OstConsultant\Models;
+
+use Shopware\Components\Model\ModelRepository;
+
+class Repository extends ModelRepository
+{
+}

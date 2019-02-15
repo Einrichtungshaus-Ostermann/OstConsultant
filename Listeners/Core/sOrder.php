@@ -42,4 +42,34 @@ class sOrder
         // and save in attribute
         return $attributeData;
     }
+
+    /**
+     * ...
+     *
+     * @param EventArgs $arguments
+     *
+     * @return array
+     */
+    public function filterDetailAttributes(EventArgs $arguments)
+    {
+        // get the data
+        $attributeData = $arguments->getReturn();
+        $basketRow = $arguments->get("basketRow");
+
+        // is this a discount?!
+        if ( !isset( $basketRow['ostConsultantDiscount']) ||$basketRow['ostConsultantDiscount'] == false) {
+            // nope
+            return $attributeData;
+        }
+
+        // set discount data to attributes
+        $attributeData['ost_consultant_discount_status'] = true;
+        $attributeData['ost_consultant_discount_number'] = (int) $basketRow['ostConsultantDiscountNumber'];
+        $attributeData['ost_consultant_discount_type'] = (string) $basketRow['ostConsultantDiscountType'];
+        $attributeData['ost_consultant_discount_value'] = (float) $basketRow['ostConsultantDiscountValue'];
+        $attributeData['ost_consultant_discount_parent_number'] = (string) $basketRow['ostConsultantDiscountParentNumber'];
+
+        // and save in attribute
+        return $attributeData;
+    }
 }

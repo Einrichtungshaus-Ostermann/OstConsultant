@@ -59,6 +59,9 @@
  * 1.1.4
  * - fixed customer erp search mock data
  *
+ * 1.2.0
+ * - added order discounts
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
@@ -123,7 +126,8 @@ class OstConsultant extends Plugin
             $this,
             $context,
             $this->container->get('models'),
-            $this->container->get('shopware_attribute.crud_service')
+            $this->container->get('shopware_attribute.crud_service'),
+            $this->getPath() . '/'
         );
         $updater->install();
 
@@ -143,7 +147,8 @@ class OstConsultant extends Plugin
             $this,
             $context,
             $this->container->get('models'),
-            $this->container->get('shopware_attribute.crud_service')
+            $this->container->get('shopware_attribute.crud_service'),
+            $this->getPath() . '/'
         );
         $updater->update($context->getCurrentVersion());
 

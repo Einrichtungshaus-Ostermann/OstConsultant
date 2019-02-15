@@ -1,0 +1,64 @@
+/**
+ * Einrichtungshaus Ostermann GmbH & Co. KG - Consultant
+ *
+ * @package   OstConsultant
+ *
+ * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
+ * @copyright 2018 Einrichtungshaus Ostermann GmbH & Co. KG
+ * @license   proprietary
+ */
+
+// ...
+div.ost-consultant--discount-selection {
+    .discount-container {
+        height: ~"calc(100% - 80px)";
+        overflow-y: auto;
+
+        .discount {
+            border: 1px solid gray;
+            padding: 5px;
+            margin: 10px 10px;
+            cursor: pointer;
+            background-color: #f6f6f6;
+            border-color: #ddd;
+
+            > div {
+                line-height: 60px;
+                font-size: 28px;
+            }
+
+            .number {
+                width: 20%;
+                text-align: center;
+                font-weight: bold;
+            }
+            .name {
+                width: 60%;
+            }
+            .value {
+                width: 20%;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            &.is--selected {
+                background: #3f5866;
+                border-color: #3f5866;
+                color: #ffffff;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .button-container {
+        button {
+            height: 60px;
+            margin: 10px 0 10px 10px;
+            font-size: 28px;
+            font-weight: bold;
+            width: ~"calc(50% - 15px)";
+        }
+    }
+}

@@ -21,6 +21,9 @@
             customerSearchUrl:    '{url controller="OstConsultant" action="customerSearch"}',
             erpCustomerSearchUrl: '{url controller="OstConsultant" action="erpCustomerSearch"}',
             resetUrl:             '{url controller="OstConsultant" action="reset"}',
+            cartUrl:              '{url controller="checkout" action="cart"}',
+            addDiscountUrl:       '{url module="widgets" controller="OstConsultant" action="addDiscount"}',
+            getDiscountsUrl:      '{url module="widgets" controller="OstConsultant" action="getDiscounts"}',
         };
 
     </script>

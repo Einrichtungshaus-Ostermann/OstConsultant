@@ -39,5 +39,13 @@
             <tag name="shopware.event_listener" method="filterAttributes" event="Shopware_Modules_Order_SaveOrder_FilterAttributes" />
         </service>
 
+        <service id="ost_consultant.listeners.core.s_order.filter_detail_attributes" class="OstConsultant\Listeners\Core\sOrder">
+            <tag name="shopware.event_listener" method="filterDetailAttributes" event="Shopware_Modules_Order_SaveOrder_FilterDetailAttributes" />
+        </service>
+
+        <service id="ost_consultant.listeners.core.s_basket.filter_basket" class="OstConsultant\Listeners\Core\sBasket">
+            <tag name="shopware.event_listener" method="filterBasket" event="Shopware_Modules_Basket_GetBasket_FilterResult" />
+        </service>
+
     </services>
 </container>
