@@ -62,6 +62,9 @@
  * 1.2.0
  * - added order discounts
  *
+ * 1.2.1
+ * - fixed css
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
