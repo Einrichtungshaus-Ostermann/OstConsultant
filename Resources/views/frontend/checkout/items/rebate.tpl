@@ -19,7 +19,7 @@
             <form action="{url module='widgets' controller='OstConsultant' action='removeDiscount' basketId=$sBasketItem.ostConsultantDiscountParentBasketId}" method="post">
                 {s name="CartDiscountLinkDelete" assign="snippetCartDiscountLinkDelete"}Löschen{/s}
                 <button type="submit" class="btn" title="{$snippetCartDiscountLinkDelete|escape}">
-                    X
+                    <i class="icon--trash"></i>
                 </button>
             </form>
         </div>

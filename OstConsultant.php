@@ -65,6 +65,9 @@
  * 1.2.1
  * - fixed css
  *
+ * 1.2.2
+ * - changed product-action-icons in checkout
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
