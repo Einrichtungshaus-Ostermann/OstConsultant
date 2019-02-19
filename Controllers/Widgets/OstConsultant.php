@@ -142,7 +142,8 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
         switch ( $discount['target'] )
         {
             case Discount::TARGET_HEAD:
-                $discounts['head'] = array(
+                $md5 = substr(md5(time() . microtime() . serialize($discount)), 0, 8);
+                $discounts['head'][$md5] = array(
                     'number' => $number,
                     'name' => $discount['name'],
                     'type' => $discount['type'],
@@ -186,11 +187,10 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
         if ( !isset( $discounts['head'] ) ) $discounts['head'] = array();
         if ( !isset( $discounts['positions'] ) ) $discounts['positions'] = array();
 
-        // ...
-        if ( isset( $discounts['positions'][$basketId])) unset($discounts['positions'][$basketId]);
-
-        // zero is the head discount
-        if ($basketId == 0) $discounts['head'] = array();
+        // its either a position with a basket id as integer
+        // or its an md5 checksum as string
+        if (isset($discounts['positions'][$basketId])) unset($discounts['positions'][$basketId]);
+        if (isset($discounts['head'][$basketId])) unset($discounts['head'][$basketId]);
 
         // set it back
         $session->offsetSet("ost-consultant--discounts", $discounts);

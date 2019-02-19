@@ -60,11 +60,11 @@ class sBasket
             array_push($content,$arr['discount']);
         }
 
-        // do we have a head discount?
-        if (count($discounts['head']) > 0)
+        // loop every head discount
+        foreach ($discounts['head'] as $key => $head)
         {
             // add article to basket and content
-            $arr = $this->addArticle($basket, array('id' => 0, 'number' => "", 'amountNumeric' => $basket['AmountNumeric']), $discounts['head'], 1);
+            $arr = $this->addArticle($basket, array('id' => $key, 'number' => "", 'amountNumeric' => $basket['AmountNumeric']), $head, 1);
 
             // save it back
             $basket = $arr['basket'];
@@ -109,10 +109,12 @@ class sBasket
             'tax'   => $discountPrice - ( $discountPrice / ( 1 + ( $tax['rate'] / 100 ) ) )
         );
 
+        // set the name
         $name = ( $discount['type'] == DISCOUNT::TYPE_ABSOLUTE )
-            ? $discount['number'] . " - " . $discount['name'] .  " (" . ( $discountPrice * (-1)) . " EUR)"
-            : $discount['number'] . " - " . $discount['name'] .  " (" . $discount['value'] . " %)";
+            ? $discount['number'] . " - " . $discount['name'] .  " (" . str_replace(".", ",", ($discountPrice * (-1))) . " EUR)"
+            : $discount['number'] . " - " . $discount['name'] .  " (" . str_replace(".", ",", $discount['value']) . " %)";
 
+        // and force a number
         $number = "DISCOUNT-" . $discount['number'];
 
         // create the article

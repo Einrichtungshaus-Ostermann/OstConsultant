@@ -68,6 +68,9 @@
  * 1.2.2
  * - changed product-action-icons in checkout
  *
+ * 1.2.3
+ * - added option to add multiple head discounts to the basket
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
