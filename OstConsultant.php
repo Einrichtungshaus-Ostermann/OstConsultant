@@ -71,6 +71,9 @@
  * 1.2.3
  * - added option to add multiple head discounts to the basket
  *
+ * 1.2.4
+ * - added support for additional fields in customer registration
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

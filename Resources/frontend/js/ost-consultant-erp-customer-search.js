@@ -105,6 +105,9 @@
                         // always force germany
                         $form.find( "select#country" ).val( "2" );
 
+                        // always force first floor
+                        $form.find( "select#additionalAddressLine1" ).val( "Erdgeschoss" );
+
                         // set html
                         $( "body form.panel.ost-consultant--register--form" ).show();
                         $( "body button.ost-consultant--display-registration" ).hide();

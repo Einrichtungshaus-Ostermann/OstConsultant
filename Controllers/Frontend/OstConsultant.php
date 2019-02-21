@@ -352,6 +352,8 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         $billing->setCity($data['billing']['city']);
         $billing->setPhone($data['personal']['phone']);
         $billing->setCountry($country);
+        $billing->setAdditionalAddressLine1($data['billing']['additionalAddressLine1']);
+        $billing->setAdditionalAddressLine2($data['billing']['additionalAddressLine2']);
 
         $shipping = null;
 
@@ -369,6 +371,8 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
             $shipping->setCity($data['shipping']['city']);
             $shipping->setPhone($data['shipping']['phone']);
             $shipping->setCountry($shippingCountry);
+            $shipping->setAdditionalAddressLine1($data['shipping']['additionalAddressLine1']);
+            $shipping->setAdditionalAddressLine2($data['shipping']['additionalAddressLine2']);
         }
 
         $shop = $context->getShop();
