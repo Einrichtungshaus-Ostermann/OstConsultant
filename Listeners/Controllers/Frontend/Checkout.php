@@ -35,7 +35,7 @@ class Checkout
         if ( strtolower( $request->getActionName() ) != "finish" )
             // nothing to do
             return;
-        
+
         // save the consultant session
         $consultant = Shopware()->Container()->get('ost_consultant.consultant_service')->getConsultant();
 

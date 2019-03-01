@@ -74,6 +74,9 @@
  * 1.2.4
  * - added support for additional fields in customer registration
  *
+ * 1.2.5
+ * - remove head-discount button from checkout shipping/payment action
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
