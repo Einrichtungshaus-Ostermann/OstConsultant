@@ -36,6 +36,19 @@ class Checkout
             // nothing to do
             return;
 
+        // ...
+        $query = "
+            SELECT attribute.ost_consultant_advance_payment
+            FROM s_order AS orders
+                LEFT JOIN s_order_attributes AS attribute
+                    ON orders.id = attribute.orderID
+            WHERE orders.ordernumber = :number
+        ";
+        $advancePayment = (float) Shopware()->Db()->fetchOne($query, array('number' => $view->getAssign('sOrderNumber')));
+
+        // assign it
+        $view->assign('ostConsultantAdvancePayment', $advancePayment);
+
         // save the consultant session
         $consultant = Shopware()->Container()->get('ost_consultant.consultant_service')->getConsultant();
 

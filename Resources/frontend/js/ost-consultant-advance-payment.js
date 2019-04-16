@@ -16,11 +16,19 @@
     // create plugin
     $.plugin( "ostConsultantAdvancePayment", {
 
+        // configuration
+        configuration: {
+            amount: null
+        },
+
         // on initialization
         init: function ()
         {
             // get this
             var me = this;
+
+            // set configuration
+            me.configuration.amount = parseFloat(me.$el.data('amount'));
 
             // ...
             me._on( me.$el.find( 'button[data-ost-consultant-advance-payment-button="true"]' ), 'click', $.proxy( me.onButtonClick, me ) );
@@ -45,6 +53,12 @@
                     // parse to float
                     number = number.replace(",", ".");
                     number = parseFloat( number );
+
+                    // maximum amount
+                    if (number > me.configuration.amount) {
+                        $.ostFoundationAlert.open('Die Anzahlung darf die Gesamtsumme nicht übersteigern.', {});
+                        return;
+                    }
 
                     // as locale currency string
                     number = Number(number).toLocaleString("de-DE", {minimumFractionDigits: 2, maximumFractionDigits: 2});

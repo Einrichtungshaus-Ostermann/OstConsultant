@@ -80,6 +80,10 @@
  * 1.2.6
  * - removed obsolete discounts
  *
+ * 1.2.7
+ * - added validation for advance payment
+ * - added output of advance payment on checkout finish
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

@@ -26,7 +26,7 @@
     {* add parent *}
     {$smarty.block.parent}
 
-    <div class="panel has--border ost-consultant--advance-payment--container">
+    <div class="panel has--border ost-consultant--advance-payment--container" data-amount="{if $sAmountWithTax && $sUserData.additional.charge_vat}{$sAmountWithTax}{else}{$sAmount}{/if}">
 
         <div class="panel--body is--rounded">
             <div class="table--header block-group">
