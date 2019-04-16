@@ -77,6 +77,9 @@
  * 1.2.5
  * - remove head-discount button from checkout shipping/payment action
  *
+ * 1.2.6
+ * - removed obsolete discounts
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
