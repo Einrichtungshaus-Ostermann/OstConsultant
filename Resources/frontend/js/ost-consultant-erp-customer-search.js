@@ -21,6 +21,32 @@
             erpCustomerSearchUrl: null
         },
 
+        // country mapping
+        countries: [
+            { iso: 'D', id: 2 },
+            { iso: 'GB', id: 11 },
+            { iso: 'IE', id: 12 },
+            { iso: 'FI', id: 8 },
+            { iso: 'DK', id: 7 },
+            { iso: 'BE', id: 5 },
+            { iso: 'PL', id: 30 },
+            { iso: 'NO', id: 22 },
+            { iso: 'NL', id: 21 },
+            { iso: 'LI', id: 29 },
+            { iso: 'SE', id: 25 },
+            { iso: 'FR', id: 9 },
+            { iso: 'GR', id: 10 },
+            { iso: 'TR', id: 32 },
+            { iso: 'ES', id: 27 },
+            { iso: 'PT', id: 24 },
+            { iso: 'CH', id: 26 },
+            { iso: 'IT', id: 14 },
+            { iso: 'AT', id: 23 },
+            { iso: 'LT', id: 42 },
+            { iso: 'HU', id: 31 },
+            { iso: 'CZ', id: 32 },
+        ],
+
         // error message template
         error: '<div class="alert is--error is--rounded"><div class="alert--icon"><i class="icon--element icon--warning"></i></div><div class="alert--content">#message#</div></div>',
 
@@ -96,14 +122,10 @@
                             $form.find( "input#" + inputs[key] ).val( $customer.data( inputs[key] ) );
 
                         // set country
-                        //if ( $customer.data( "country" ) == "D" )
-                        //    $form.find( "select#country" ).val( "2" );
+                        $form.find( "select#country" ).val( me.getCountryId($customer.data( "country" )).toString() );
 
                         // email address
                         $form.find( "input#register_personal_email" ).val( $customer.data( "email" ) );
-
-                        // always force germany
-                        $form.find( "select#country" ).val( "2" );
 
                         // always force first floor
                         $form.find( "select#additionalAddressLine1" ).val( "Erdgeschoss" );
@@ -123,6 +145,20 @@
                     });
                 }
             );
+        },
+
+        // ...
+        getCountryId: function(iso)
+        {
+            // ...
+            for (var i in this.countries) {
+                if (this.countries[i].iso == iso) {
+                    return this.countries[i].id;
+                }
+            }
+
+            // return the first as default
+            return this.countries[0].id;
         },
 
         // on destroy

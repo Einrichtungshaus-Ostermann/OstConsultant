@@ -84,6 +84,9 @@
  * - added validation for advance payment
  * - added output of advance payment on checkout finish
  *
+ * 1.2.8
+ * - fixed country selection for erp-customer-search
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
