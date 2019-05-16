@@ -46,7 +46,8 @@
                 "Anzahlung leisten",
                 {
                     castToInteger: false,
-                    hasDecimals: true
+                    hasDecimals: true,
+                    noHeader: true
                 },
                 function( number ) {
 
@@ -56,7 +57,7 @@
 
                     // maximum amount
                     if (number > me.configuration.amount) {
-                        $.ostFoundationAlert.open('Die Anzahlung darf die Gesamtsumme nicht übersteigern.', {});
+                        $.ostFoundationAlert.open('Die Anzahlung darf die Gesamtsumme nicht übersteigern.', { noHeader: true });
                         return;
                     }
 

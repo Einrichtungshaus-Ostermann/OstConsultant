@@ -87,6 +87,9 @@
  * 1.2.8
  * - fixed country selection for erp-customer-search
  *
+ * 1.2.9
+ * - removed header from advance-payment modal for compatibility reasons
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
