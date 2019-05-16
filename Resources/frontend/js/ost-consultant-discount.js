@@ -311,6 +311,12 @@
                 },
                 function( response )
                 {
+                    // ...
+                    if (response.success === false ) {
+                        $.ostFoundationAlert.open(response.error, {});
+                        return;
+                    }
+
                     // redirect to cart
                     $.ostFoundationLoadingIndicator.open();
                     window.location.href = me.configuration.cartUrl;

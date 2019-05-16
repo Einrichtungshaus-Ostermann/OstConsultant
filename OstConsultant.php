@@ -90,6 +90,9 @@
  * 1.2.9
  * - removed header from advance-payment modal for compatibility reasons
  *
+ * 1.2.10
+ * - added check for duplicate head discounts
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

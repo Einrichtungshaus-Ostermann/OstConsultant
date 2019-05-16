@@ -138,6 +138,18 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
         ";
         $discount = Shopware()->Db()->fetchRow($query, array('number' => $number, 'company' => $company));
 
+        // check if we already have this discount
+        if ($discount['target'] === Discount::TARGET_HEAD) {
+            // do we already have it?
+            if (in_array($number, array_column($discounts['head'], "number"))) {
+                // stop
+                die(json_encode(array(
+                    'success' => false,
+                    'error' => "Der Kopfnachlass wurde bereits angelegt."
+                )));
+            }
+        }
+
         // switch by type
         switch ( $discount['target'] )
         {
