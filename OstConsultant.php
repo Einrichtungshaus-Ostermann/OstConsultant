@@ -93,6 +93,9 @@
  * 1.2.10
  * - added check for duplicate head discounts
  *
+ * 1.3.0
+ * - added backend app for discounts
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
