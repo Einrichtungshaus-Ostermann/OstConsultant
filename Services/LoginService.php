@@ -49,7 +49,7 @@ class LoginService implements LoginServiceInterface
         $session->offsetSet(
             'ost-consultant',
             [
-                'number' => $consultant->getNumber(),
+                'number' => str_pad($consultant->getNumber(), 6, "0", STR_PAD_LEFT),
                 'name'   => $consultant->getName()
             ]
         );

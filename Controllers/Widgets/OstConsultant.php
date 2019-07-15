@@ -26,11 +26,7 @@ class Shopware_Controllers_Widgets_OstConsultant extends Enlight_Controller_Acti
     {
         // ...
         $viewDir = $this->container->getParameter('ost_consultant.view_dir');
-
-        // ...
         $this->get('template')->addTemplateDir($viewDir);
-
-        // ...
         parent::preDispatch();
     }
 

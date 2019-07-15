@@ -37,7 +37,13 @@ class ConsultantService implements ConsultantServiceInterface
         /* @var $session Session */
         $session = Shopware()->Container()->get('session');
 
+        // get the consultant
+        $consultant = $session->offsetGet('ost-consultant');
+
+        // force 6 chars
+        $consultant['number'] = str_pad($consultant['number'], 6, "0", STR_PAD_LEFT);
+
         // return session offset
-        return $session->offsetGet('ost-consultant');
+        return $consultant;
     }
 }

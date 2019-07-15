@@ -96,6 +96,10 @@
  * 1.3.0
  * - added backend app for discounts
  *
+ * 1.3.1
+ * - added consultant id to consultant badge as data attribute
+ * - forced consultant id to have 6 chars with a leading 0
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
