@@ -100,6 +100,9 @@
  * - added consultant id to consultant badge as data attribute
  * - forced consultant id to have 6 chars with a leading 0
  *
+ * 1.3.2
+ * - fixed missing type cast
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
