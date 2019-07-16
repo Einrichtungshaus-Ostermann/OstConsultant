@@ -40,6 +40,12 @@ class ConsultantService implements ConsultantServiceInterface
         // get the consultant
         $consultant = $session->offsetGet('ost-consultant');
 
+        // not even an array?
+        if (!is_array($consultant)) {
+            // nothing to do
+            return $consultant;
+        }
+
         // force 6 chars
         $consultant['number'] = str_pad((string) $consultant['number'], 6, "0", STR_PAD_LEFT);
 

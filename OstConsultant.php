@@ -103,6 +103,9 @@
  * 1.3.2
  * - fixed missing type cast
  *
+ * 1.3.3
+ * - fixed check for logged-in consultant
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
