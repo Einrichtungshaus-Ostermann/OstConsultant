@@ -57,7 +57,7 @@
 
                     // maximum amount
                     if (number > me.configuration.amount) {
-                        $.ostFoundationAlert.open('Die Anzahlung darf die Gesamtsumme nicht übersteigern.', { noHeader: true });
+                        $.ostFoundationAlert.open('Die Anzahlung darf nicht höher als die Gesamtsumme sein.', { noHeader: true });
                         return;
                     }
 

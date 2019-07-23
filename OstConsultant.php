@@ -106,6 +106,9 @@
  * 1.3.3
  * - fixed check for logged-in consultant
  *
+ * 1.3.4
+ * - fixed typo
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
