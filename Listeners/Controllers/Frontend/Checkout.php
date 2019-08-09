@@ -14,6 +14,7 @@ namespace OstConsultant\Listeners\Controllers\Frontend;
 
 use Enlight_Controller_Action as Controller;
 use Enlight_Event_EventArgs as EventArgs;
+use Enlight_View_Default as View;
 
 class Checkout
 {
@@ -31,11 +32,42 @@ class Checkout
         $request = $controller->Request();
         $view    = $controller->View();
 
-        // only finish action
-        if ( strtolower( $request->getActionName() ) != "finish" )
-            // nothing to do
-            return;
+        // by action type
+        switch (strtolower($request->getActionName())) {
+            case "confirm":
+                $this->onPostDispatchConfirm($view);
+                break;
+            case "finish":
+                $this->onPostDispatchFinish($view);
+                break;
+        }
+    }
 
+    /**
+     * ...
+     *
+     * @param View $view
+     */
+    private function onPostDispatchConfirm(View $view)
+    {
+        // ...
+        $query = "
+            SELECT `key`, name
+            FROM ost_consultant_notifications
+        ";
+        $notifications = Shopware()->Db()->fetchPairs($query);
+
+        // add it to the view
+        $view->assign('ostConsultantCustomerNotificationTypes', $notifications);
+    }
+
+    /**
+     * ...
+     *
+     * @param View $view
+     */
+    private function onPostDispatchFinish(View $view)
+    {
         // ...
         $query = "
             SELECT attribute.ost_consultant_advance_payment

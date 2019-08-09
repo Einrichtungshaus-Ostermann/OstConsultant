@@ -118,6 +118,19 @@ class Update
             case '1.2.4':
             case '1.2.5':
                 $this->updateSql("1.2.6");
+            case '1.2.6':
+            case '1.2.7':
+            case '1.2.8':
+            case '1.2.9':
+            case '1.2.10':
+            case '1.3.0':
+            case '1.3.1':
+            case '1.3.2':
+            case '1.3.3':
+            case '1.3.4':
+                $this->updateAttributes();
+                $this->updateSql("1.4.0-a");
+                $this->updateSql("1.4.0-b");
         }
     }
 

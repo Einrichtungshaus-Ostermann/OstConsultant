@@ -12,8 +12,6 @@
 
 namespace OstConsultant\Setup;
 
-use Doctrine\ORM\Tools\SchemaTool;
-use OstConsultant\Models;
 use Shopware\Bundle\AttributeBundle\Service\CrudService;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Components\Plugin;
@@ -49,15 +47,6 @@ class Uninstall
      * @var CrudService
      */
     protected $crudService;
-
-    /**
-     * ...
-     *
-     * @var array
-     */
-    protected $models = [
-        Models\Discount::class
-    ];
 
     /**
      * ...
@@ -117,23 +106,15 @@ class Uninstall
      */
     private function uninstallModels()
     {
-        // get entity manager
-        $em = $this->modelManager;
+        // drop...
+        $query = '
+            DROP TABLE IF EXISTS `ost_consultant_discounts`;
+            DROP TABLE IF EXISTS `ost_consultant_notifications`;
+        ';
 
-        // get our schema tool
-        $tool = new SchemaTool($em);
-
-        // ...
-        $classes = array_map(
-            function ($model) use ($em) {
-                return $em->getClassMetadata($model);
-            },
-            $this->models
-        );
-
-        // remove them
+        // try to drop
         try {
-            $tool->dropSchema($classes);
+            Shopware()->Db()->query($query);
         } catch (Exception $exception) {
         }
     }

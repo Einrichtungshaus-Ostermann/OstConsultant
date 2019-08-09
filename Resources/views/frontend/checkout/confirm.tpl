@@ -15,6 +15,7 @@
 
     {* hidden fields *}
     <input type="hidden" id="ost-consultant--advance-payment" name="ost-consultant--advance-payment" value="0">
+    <input type="hidden" id="ost-consultant--customer-notification-type" name="ost-consultant--customer-notification-type" value="">
 
 {/block}
 
@@ -27,7 +28,6 @@
     {$smarty.block.parent}
 
     <div class="panel has--border ost-consultant--advance-payment--container" data-amount="{if $sAmountWithTax && $sUserData.additional.charge_vat}{$sAmountWithTax}{else}{$sAmount}{/if}">
-
         <div class="panel--body is--rounded">
             <div class="table--header block-group">
                 <div class="panel--th column--product block">
@@ -37,6 +37,23 @@
             <div class="table--tr block-group row--product is--last-row">
                 <input type="text" data-ost-consultant-advance-payment-input="true" disabled/>
                 <button class="btn" data-ost-consultant-advance-payment-button="true">Anzahlung</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel has--border ost-consultant--customer-notification-type--container">
+        <div class="panel--body is--rounded">
+            <div class="table--header block-group">
+                <div class="panel--th column--product block">
+                    Benachrichtigungsart
+                </div>
+            </div>
+            <div class="table--tr block-group row--product is--last-row">
+                <select data-ost-consultant-customer-notification-type-select="true">
+                    {foreach $ostConsultantCustomerNotificationTypes as $key => $name}
+                        <option value="{$key}"{if $name@iteration == 1} selected{/if}>{$name}</option>
+                    {/foreach}
+                </select>
             </div>
         </div>
     </div>

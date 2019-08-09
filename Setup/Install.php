@@ -66,6 +66,19 @@ class Install
                     'position'         => 120
 
                 ]
+            ],
+            [
+                'column' => 'ost_consultant_customer_notification_type',
+                'type'   => 'string',
+                'data'   => [
+                    'label'            => 'Benachrichtigungsart',
+                    'helpText'         => 'Die Benachrichtigungsart (AVAD) des Kunden.',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => false,
+                    'position'         => 125
+
+                ]
             ]
         ],
         's_order_details_attributes' => [

@@ -109,6 +109,9 @@
  * 1.3.4
  * - fixed typo
  *
+ * 1.4.0
+ * - added customer notification type
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

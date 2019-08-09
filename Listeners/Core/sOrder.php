@@ -39,6 +39,9 @@ class sOrder
         // set it in the attribute
         $attributeData['ost_consultant_advance_payment'] = $advancePayment;
 
+        // set the customer notification type
+        $attributeData['ost_consultant_customer_notification_type'] = $request->getPost('ost-consultant--customer-notification-type');
+
         // and save in attribute
         return $attributeData;
     }
