@@ -233,17 +233,24 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
 
             } else {
 
+                // loop every search element to add a fulltext search
+                foreach ($arr as $k => $v) {
+                    // append star after the search element
+                    $arr[$k] = '' . $v . '*';
+                }
 
-
+                // set up host
                 $hosts = [
                     $configuration['erpCustomerSearchEsHost']
                 ];
 
+                // create the client
                 $client = ClientBuilder::create()->setHosts($hosts)->build();
 
+                // set the parameters
                 $params = [
                     'index' => $configuration['erpCustomerSearchEsIndex'],
-                    'type' => 'customer',
+                    'type' => '_doc',
                     'body' => [
                         'query' => [
                             'simple_query_string' => [
@@ -252,54 +259,46 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
                             ]
                         ]
                     ],
+                    'client' => [
+                        'curl' => [
+                            CURLOPT_HTTPHEADER => [
+                                'Content-type: application/json'
+                            ]
+                        ]
+                    ],
                     'size' => 25
                 ];
 
-
-
+                // search via elastic search
                 $response = $client->search($params);
 
+                // every customer here
                 $customers = [];
 
+                // loop every result
                 foreach ($response['hits']['hits'] as $hit) {
-
+                    // short for current hit
                     $hitData = $hit['_source'];
 
-                    $customerData = [
-                        'ADANUM' => $hitData['ADANUM'],
-                        'ADANRD' => $hitData['ADANRD'] === '02' ? 'Herr' : 'Frau',
-                        'ADAVOR' => $hitData['ADAVOR'],
-                        'ADNNAM' => $hitData['ADNNAM'],
-                        'ADLNM1' => $hitData['ADLNM1'],
-                        'ADLNM2' => $hitData['ADLNM2'],
-                        'ADLSTR' => $hitData['ADLSTR'],
-                        'ADPL15' => $hitData['ADPL15'],
-                        'ADLORT' => $hitData['ADLORT'],
-                    ];
+                    // and set as struct
+                    $struct = new \OstErpApi\Struct\Customer();
+                    $struct->setNumber((integer) $hitData['ADANUM']);
+                    $struct->setEmail('');
+                    $struct->setSalutation((string) $hitData['ADANUM']);
+                    $struct->setFirstName((string) $hitData['ADAVOR']);
+                    $struct->setLastName((string) $hitData['ADNNAM']);
+                    $struct->setPhone('');
+                    $struct->setStreet((string) $hitData['ADLSTR']);
+                    $struct->setZip((string) $hitData['ADPL15']);
+                    $struct->setCity((string) $hitData['ADLORT']);
+                    $struct->setCountry((string) $hitData['ADHLND']);
 
-                    $customers[] = $customerData;
+                    // add it to the result
+                    $customers[] = $struct;
                 }
-
-
-                var_dump($customers);
-                die();
-
-
             }
-
-
-
-
         }
-
-
-
-
-
-
-
-
-
+        
         // and assign them
         $this->View()->assign('customers', $customers);
     }
