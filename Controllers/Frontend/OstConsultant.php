@@ -21,6 +21,7 @@ use Shopware\Components\CSRFWhitelistAware;
 use Shopware\Models\Country\Country;
 use Shopware\Models\Customer\Address;
 use Shopware\Models\Customer\Customer;
+use Elasticsearch\ClientBuilder;
 
 class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Action implements CSRFWhitelistAware
 {
@@ -171,11 +172,11 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
      */
     public function erpCustomerSearchAction()
     {
+        // get configuration
+        $configuration = Shopware()->Container()->get('ost_consultant.configuration');
+
         // get the search
         $search = $this->Request()->getParam('search');
-
-        /* @var $searchService ErpCustomerSearchServiceInterface */
-        $searchService = $this->container->get('ost_consultant.erp_customer_search_service');
 
         // explode the search for multiple search termans
         $arr = explode(' ', $search);
@@ -219,11 +220,85 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         }
         else
         {
-            // try to find customers
-            $customers = $searchService->find(
-                $arr
-            );
+            // iwm adapter?
+            if ($configuration['erpCustomerSearchAdapter'] === 'iwm') {
+
+                /* @var $searchService ErpCustomerSearchServiceInterface */
+                $searchService = $this->container->get('ost_consultant.erp_customer_search_service');
+
+                // try to find customers
+                $customers = $searchService->find(
+                    $arr
+                );
+
+            } else {
+
+
+
+                $hosts = [
+                    $configuration['erpCustomerSearchEsHost']
+                ];
+
+                $client = ClientBuilder::create()->setHosts($hosts)->build();
+
+                $params = [
+                    'index' => $configuration['erpCustomerSearchEsIndex'],
+                    'type' => 'customer',
+                    'body' => [
+                        'query' => [
+                            'simple_query_string' => [
+                                'query' => implode(' ', $arr),
+                                'default_operator' => 'and'
+                            ]
+                        ]
+                    ],
+                    'size' => 25
+                ];
+
+
+
+                $response = $client->search($params);
+
+                $customers = [];
+
+                foreach ($response['hits']['hits'] as $hit) {
+
+                    $hitData = $hit['_source'];
+
+                    $customerData = [
+                        'ADANUM' => $hitData['ADANUM'],
+                        'ADANRD' => $hitData['ADANRD'] === '02' ? 'Herr' : 'Frau',
+                        'ADAVOR' => $hitData['ADAVOR'],
+                        'ADNNAM' => $hitData['ADNNAM'],
+                        'ADLNM1' => $hitData['ADLNM1'],
+                        'ADLNM2' => $hitData['ADLNM2'],
+                        'ADLSTR' => $hitData['ADLSTR'],
+                        'ADPL15' => $hitData['ADPL15'],
+                        'ADLORT' => $hitData['ADLORT'],
+                    ];
+
+                    $customers[] = $customerData;
+                }
+
+
+                var_dump($customers);
+                die();
+
+
+            }
+
+
+
+
         }
+
+
+
+
+
+
+
+
 
         // and assign them
         $this->View()->assign('customers', $customers);

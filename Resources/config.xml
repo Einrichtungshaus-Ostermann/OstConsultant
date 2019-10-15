@@ -14,5 +14,46 @@
             <description>Die standard Startseite des Verkäufers.</description>
         </element>
 
+        <element type="button">
+            <name>erpCustomerSearchButton</name>
+            <label><![CDATA[<b>ERP Kundensuche</b>]]></label>
+        </element>
+
+        <element type="select">
+            <name>erpCustomerSearchAdapter</name>
+            <label>Adapter der Kundensuche</label>
+            <value>iwm</value>
+            <description>Wie sollen Kunden gesucht werden?</description>
+            <store>
+                <option>
+                    <value>iwm</value>
+                    <label>via IWM</label>
+                </option>
+                <option>
+                    <value>es</value>
+                    <label>via Elastic Search</label>
+                </option>
+            </store>
+        </element>
+
+        <element type="button">
+            <name>erpCustomerSearchEsButton</name>
+            <label><![CDATA[<b>ERP Kundensuche - Elastic Search</b>]]></label>
+        </element>
+
+        <element type="text">
+            <name>erpCustomerSearchEsHost</name>
+            <label>Host</label>
+            <value>http://127.0.0.1:9200</value>
+            <description>Der Host des ES.</description>
+        </element>
+
+        <element type="text">
+            <name>erpCustomerSearchEsIndex</name>
+            <label>Index</label>
+            <value>customer-search</value>
+            <description>Der Index des ES.</description>
+        </element>
+
     </elements>
 </config>

@@ -112,6 +112,9 @@
  * 1.4.0
  * - added customer notification type
  *
+ * 1.5.0
+ * - added elastic search as adapter for erp customer search
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
