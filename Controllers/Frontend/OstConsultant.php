@@ -257,6 +257,9 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
                                 'query' => implode(' ', $arr),
                                 'default_operator' => 'and'
                             ]
+                        ],
+                        'sort' => [
+                            'ADANUM' => 'desc'
                         ]
                     ],
                     'client' => [
