@@ -250,7 +250,7 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
                 // set the parameters
                 $params = [
                     'index' => $configuration['erpCustomerSearchEsIndex'],
-                    'type' => '_doc',
+                    'type' => 'customer',
                     'body' => [
                         'query' => [
                             'simple_query_string' => [

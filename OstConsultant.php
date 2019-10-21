@@ -118,6 +118,9 @@
  * 1.5.1
  * - added default order for es erp customer search
  *
+ * 1.5.2
+ * - fixed type for es erp customer search
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
