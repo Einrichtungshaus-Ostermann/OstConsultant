@@ -301,7 +301,7 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
                 }
             }
         }
-        
+
         // and assign them
         $this->View()->assign('customers', $customers);
     }

@@ -115,6 +115,9 @@
  * 1.5.0
  * - added elastic search as adapter for erp customer search
  *
+ * 1.5.1
+ * - added default order for es erp customer search
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
