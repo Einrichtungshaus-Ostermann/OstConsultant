@@ -232,13 +232,6 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
                 );
 
             } else {
-
-                // loop every search element to add a fulltext search
-                foreach ($arr as $k => $v) {
-                    // append star after the search element
-                    $arr[$k] = '' . $v . '*';
-                }
-
                 // set up host
                 $hosts = [
                     $configuration['erpCustomerSearchEsHost']
@@ -254,7 +247,13 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
                     'body' => [
                         'query' => [
                             'simple_query_string' => [
-                                'query' => implode(' ', $arr),
+                                'query' => implode(' ', array_map(static function (string $term) {
+                                    if (is_numeric($term)) {
+                                        return $term;
+                                    }
+
+                                    return $term . '*';
+                                }, $arr)),
                                 'default_operator' => 'and'
                             ]
                         ],

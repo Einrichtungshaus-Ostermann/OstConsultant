@@ -121,6 +121,9 @@
  * 1.5.2
  * - fixed type for es erp customer search
  *
+ * 1.5.3
+ * - only add * if term is not numeric
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
