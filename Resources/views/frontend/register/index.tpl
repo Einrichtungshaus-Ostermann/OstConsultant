@@ -37,6 +37,9 @@
         <div class="panel--body is--wide">
             <input style="width: 70%;" type="text" placeholder="{s name='search-customer-placeholder' force}Name [und/oder] Vorname [und/oder] PLZ [und/oder] Wohnort eingeben...{/s}">
             <button style="width:20%; float: right; text-align: center;" class="btn is--primary">{s name='search-customer-button'}Kunden finden{/s}</button>
+            <button style="width:60px; float: right; text-align: center; margin-right: 10px;" class="btn camera--button">
+                <i class="icon--camera" style="font-size: 20px;vertical-align: middle;"></i>
+            </button>
             <div class="search-result-container" style=""></div>
         </div>
     </div>

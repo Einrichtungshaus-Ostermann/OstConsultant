@@ -124,6 +124,9 @@
  * 1.5.3
  * - only add * if term is not numeric
  *
+ * 1.5.4
+ * - added camera icon to customer search
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

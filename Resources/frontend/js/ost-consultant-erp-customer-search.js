@@ -63,7 +63,7 @@
             me.configuration.erpCustomerSearchUrl = ostConsultantConfiguration.erpCustomerSearchUrl;
 
             // on search click
-            me._on( me.$el.find( "button" ), 'click', $.proxy( me.onSearchClick, me ) );
+            me._on( me.$el.find( "button.is--primary" ), 'click', $.proxy( me.onSearchClick, me ) );
 
             // enter click listener
             me.$el.find( 'input[type="text"]' ).on('keyup', function (e) {
