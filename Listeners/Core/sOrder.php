@@ -42,6 +42,9 @@ class sOrder
         // set the customer notification type
         $attributeData['ost_consultant_customer_notification_type'] = $request->getPost('ost-consultant--customer-notification-type');
 
+        // set the customer notification type
+        $attributeData['ost_consultant_pickup_date'] = $request->getPost('ost-consultant--pickup-date');
+
         // and save in attribute
         return $attributeData;
     }

@@ -79,6 +79,19 @@ class Install
                     'position'         => 125
 
                 ]
+            ],
+            [
+                'column' => 'ost_consultant_pickup_date',
+                'type'   => 'string',
+                'data'   => [
+                    'label'            => 'Abholdatum',
+                    'helpText'         => 'Das gewünschte Abholdatum des Kunden.',
+                    'translatable'     => false,
+                    'displayInBackend' => true,
+                    'custom'           => false,
+                    'position'         => 130
+
+                ]
             ]
         ],
         's_order_details_attributes' => [

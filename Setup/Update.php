@@ -131,6 +131,14 @@ class Update
                 $this->updateAttributes();
                 $this->updateSql("1.4.0-a");
                 $this->updateSql("1.4.0-b");
+            case '1.4.0':
+            case '1.5.0':
+            case '1.5.1':
+            case '1.5.2':
+            case '1.5.3':
+            case '1.5.4':
+            case '1.5.5':
+                $this->updateAttributes();
         }
     }
 

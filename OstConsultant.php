@@ -130,6 +130,9 @@
  * 1.5.5
  * - added pick-up date selection
  *
+ * 1.5.6
+ * - added attribute to save the pick-up date
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

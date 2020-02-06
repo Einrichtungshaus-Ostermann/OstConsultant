@@ -16,6 +16,7 @@
     {* hidden fields *}
     <input type="hidden" id="ost-consultant--advance-payment" name="ost-consultant--advance-payment" value="0">
     <input type="hidden" id="ost-consultant--customer-notification-type" name="ost-consultant--customer-notification-type" value="">
+    <input type="hidden" id="ost-consultant--pickup-date" name="ost-consultant--pickup-date" value="{$smarty.now|date_format:"%d.%m.%Y"}">
 
 {/block}
 
@@ -35,7 +36,7 @@
                 </div>
             </div>
             <div class="table--tr block-group row--product is--last-row">
-                <div class="btn date-selection" data-ost-foundation-calendar-date-selection="true">{$smarty.now|date_format:"%d.%m.%Y"}</div>
+                <div class="btn date-selection" data-ost-consultant-pickup-date="true">{$smarty.now|date_format:"%d.%m.%Y"}</div>
             </div>
         </div>
     </div>
