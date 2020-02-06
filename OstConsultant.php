@@ -127,6 +127,9 @@
  * 1.5.4
  * - added camera icon to customer search
  *
+ * 1.5.5
+ * - added pick-up date selection
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

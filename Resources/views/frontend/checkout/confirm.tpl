@@ -27,6 +27,19 @@
     {* add parent *}
     {$smarty.block.parent}
 
+    <div class="panel has--border ost-consultant--pick-up-date--container">
+        <div class="panel--body is--rounded">
+            <div class="table--header block-group">
+                <div class="panel--th column--product block">
+                    Abholdatum
+                </div>
+            </div>
+            <div class="table--tr block-group row--product is--last-row">
+                <div class="btn date-selection" data-ost-foundation-calendar-date-selection="true">{$smarty.now|date_format:"%d.%m.%Y"}</div>
+            </div>
+        </div>
+    </div>
+
     <div class="panel has--border ost-consultant--advance-payment--container" data-amount="{if $sAmountWithTax && $sUserData.additional.charge_vat}{$sAmountWithTax}{else}{$sAmount}{/if}">
         <div class="panel--body is--rounded">
             <div class="table--header block-group">
