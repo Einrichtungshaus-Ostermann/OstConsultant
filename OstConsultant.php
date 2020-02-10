@@ -133,6 +133,9 @@
  * 1.5.6
  * - added attribute to save the pick-up date
  *
+ * 1.5.7
+ * - added camera icon listener
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
