@@ -47,5 +47,9 @@
             <tag name="shopware.event_listener" method="filterBasket" event="Shopware_Modules_Basket_GetBasket_FilterResult" />
         </service>
 
+        <service id="ost_consultant.listeners.core.s_admin.on_check_user" class="OstConsultant\Listeners\Core\sAdmin">
+            <tag name="shopware.event_listener" method="onCheckUser" event="Shopware_Modules_Admin_CheckUser_Successful" />
+        </service>
+
     </services>
 </container>

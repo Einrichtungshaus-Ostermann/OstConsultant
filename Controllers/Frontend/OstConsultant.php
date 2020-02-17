@@ -355,6 +355,27 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
             $this->loginCustomer($customer, $params['register']);
         }
 
+        // get the customer group by
+        $customerGroupKey = (string) Shopware()->Container()->get("ost_consultant.configuration")['customerGroup'];
+
+        // get the customer group data
+        $data = Shopware()->Db()->fetchRow(
+            'SELECT * FROM s_core_customergroups WHERE groupkey = ?',
+            array($customerGroupKey)
+        );
+
+        // save in session
+        Shopware()->Session()->offsetSet('sUserGroup', $customerGroupKey);
+        Shopware()->Session()->offsetSet('sUserGroupData', $data);
+
+        // update the user
+        $query = "
+            UPDATE s_user
+            SET customergroup = ?
+            WHERE id = ?
+        ";
+        Shopware()->Db()->query( $query, array( $customerGroupKey, $customer->getId() ) );
+
         $location = [
             'controller' => 'checkout',
             'action'     => 'cart',

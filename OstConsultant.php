@@ -136,6 +136,9 @@
  * 1.5.7
  * - added camera icon listener
  *
+ * 1.5.8
+ * - added plugin configuration to change consultant customer groups
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

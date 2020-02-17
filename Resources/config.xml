@@ -10,8 +10,15 @@
 
         <element type="text">
             <name>homeUrl</name>
-            <label>Verkäufer Startseite</label>
+            <label>Startseite</label>
             <description>Die standard Startseite des Verkäufers.</description>
+        </element>
+
+        <element type="text">
+            <name>customerGroup</name>
+            <label>Kundengruppe</label>
+            <value>CT</value>
+            <description>Die Kundengruppe des Verkäufers. Die Kundengruppe wird automatisch aktualisiert, sobald sich ein Verkäufer anmeldet.</description>
         </element>
 
         <element type="button">

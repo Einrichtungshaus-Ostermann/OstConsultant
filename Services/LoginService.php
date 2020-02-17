@@ -54,6 +54,19 @@ class LoginService implements LoginServiceInterface
             ]
         );
 
+        // get the customer group by
+        $customerGroupKey = (string) Shopware()->Container()->get("ost_consultant.configuration")['customerGroup'];
+
+        // get the customer group data
+        $data = Shopware()->Db()->fetchRow(
+            'SELECT * FROM s_core_customergroups WHERE groupkey = ?',
+            array($customerGroupKey)
+        );
+
+        // save in session
+        Shopware()->Session()->offsetSet('sUserGroup', $customerGroupKey);
+        Shopware()->Session()->offsetSet('sUserGroupData', $data);
+
         // all good
         return true;
     }
