@@ -139,6 +139,9 @@
  * 1.5.8
  * - added plugin configuration to change consultant customer groups
  *
+ * 1.5.9
+ * - fixed default customer group when a consultants logs out
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

@@ -50,4 +50,40 @@ class sAdmin
         $sAdmin->sSYSTEM->sUSERGROUPDATA = $data;
         $sAdmin->sSYSTEM->sUSERGROUP = $customerGroupKey;
     }
+
+    /**
+     * ...
+     *
+     * @param EventArgs $arguments
+     *
+     * @return void
+     */
+    public function onCheckUserFailure(EventArgs $arguments)
+    {
+        /** @var CoreClass $sAdmin */
+        $sAdmin = $arguments->getReturn();
+
+        /** @var Session $session */
+        $session = $arguments->get('session');
+
+        // are we not a consultant?
+        if (Shopware()->Container()->get("ost_consultant.consultant_service")->isConsultant() === true) {
+            // we are consultant and dont have to switch the customer group
+            return;
+        }
+
+        // get the customer group by
+        $customerGroupKey = 'EK';
+
+        // get the customer group data
+        $data = Shopware()->Db()->fetchRow(
+            'SELECT * FROM s_core_customergroups WHERE groupkey = ?',
+            array($customerGroupKey)
+        );
+
+        // save in session
+        Shopware()->Session()->offsetSet('sUserGroup', $customerGroupKey);
+        Shopware()->Session()->offsetSet('sUserGroupData', $data);
+
+    }
 }

@@ -51,5 +51,9 @@
             <tag name="shopware.event_listener" method="onCheckUser" event="Shopware_Modules_Admin_CheckUser_Successful" />
         </service>
 
+        <service id="ost_consultant.listeners.core.s_admin.on_check_user_failure" class="OstConsultant\Listeners\Core\sAdmin">
+            <tag name="shopware.event_listener" method="onCheckUserFailure" event="Shopware_Modules_Admin_CheckUser_Failure" />
+        </service>
+
     </services>
 </container>

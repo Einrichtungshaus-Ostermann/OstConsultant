@@ -136,6 +136,19 @@ class Shopware_Controllers_Frontend_OstConsultant extends Enlight_Controller_Act
         // log in as consultant
         $session->offsetUnset('ost-consultant');
 
+        // get the customer group by
+        $customerGroupKey = 'EK';
+
+        // get the customer group data
+        $data = Shopware()->Db()->fetchRow(
+            'SELECT * FROM s_core_customergroups WHERE groupkey = ?',
+            array($customerGroupKey)
+        );
+
+        // save in session
+        Shopware()->Session()->offsetSet('sUserGroup', $customerGroupKey);
+        Shopware()->Session()->offsetSet('sUserGroupData', $data);
+
         // create response
         $response = [
             'success' => true
