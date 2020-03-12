@@ -41,10 +41,16 @@
                 'Kalender',
                 {
                     selectable: true,
+                    selectableWeek: true,
                     callback: function(year, month, day)
                     {
                         me.$el.html(day.toString() + '.' + month.toString() + '.' + year.toString());
                         $( "body" ).find('input#ost-consultant--pickup-date').val(day.toString() + '.' + month.toString() + '.' + year.toString());
+                    },
+                    callbackWeek: function(year, week)
+                    {
+                        me.$el.html('KW ' + week.toString());
+                        $( "body" ).find('input#ost-consultant--pickup-date').val('KW ' + week.toString());
                     }
                 }
             );

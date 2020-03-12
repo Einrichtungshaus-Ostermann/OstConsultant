@@ -142,6 +142,9 @@
  * 1.5.9
  * - fixed default customer group when a consultants logs out
  *
+ * 1.5.10
+ * - added week to pick-up date selection
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>
