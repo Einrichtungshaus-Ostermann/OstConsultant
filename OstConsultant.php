@@ -145,6 +145,11 @@
  * 1.5.10
  * - added week to pick-up date selection
  *
+ *
+ *
+ * 1.5.11
+ * - pre-version - added mailer
+ *
  * @package   OstConsultant
  *
  * @author    Eike Brandt-Warneke <e.brandt-warneke@ostermann.de>

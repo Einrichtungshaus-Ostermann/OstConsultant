@@ -34,6 +34,8 @@
         <br />
         <button class="is--button" data-ost-consultant-dashboard="calendar">Kalender</button>
         <br />
+        <button class="is--button" data-ost-consultant-dashboard="mailer">Mailer</button>
+        <br />
         <button class="is--button" data-ost-consultant-dashboard="reset">Reset</button>
         <br />
         <a class="btn" href="/OstArticleSearch/search">Artikelsuche</a>

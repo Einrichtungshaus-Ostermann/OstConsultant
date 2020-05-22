@@ -41,6 +41,7 @@
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="logout"]' ), 'click', $.proxy( me.onLogoutClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="calculator"]' ), 'click', $.proxy( me.onCalculatorClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="calendar"]' ), 'click', $.proxy( me.onCalendarClick, me ) );
+            me._on( me.$el.find( 'button[data-ost-consultant-dashboard="mailer"]' ), 'click', $.proxy( me.onMailerClick, me ) );
             me._on( me.$el.find( 'button[data-ost-consultant-dashboard="reset"]' ), 'click', $.proxy( me.onResetClick, me ) );
 
             // optional selectors for emotion elements
@@ -96,6 +97,13 @@
         {
             // open calculator
             $.ostFoundationCalendar.open( "Kalender", {} );
+        },
+
+        // ...
+        onMailerClick: function ( event )
+        {
+            // open calculator
+            $.ostConsultantMailer.open( "Mailer", {} );
         },
 
         // ...
